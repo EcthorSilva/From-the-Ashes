@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Arqueiro extends Personagem {
     public Arqueiro(String nome, int vida, int forca, int defesa) {
         super(nome, vida, forca, defesa);
@@ -5,10 +7,14 @@ public class Arqueiro extends Personagem {
 
     @Override
     public int atacar() {
-        System.out.println(getNome() + " atirou uma flecha!");
-        return getForca() + 1;
+        Random rand = new Random();
+        int min = getForca() / 2;
+        int max = getForca() + getDefesa();
+        int dano = rand.nextInt(max - min + 1) + min;
+        System.out.println(getNome() + " atirou uma flecha e causou " + dano + " de dano!");
+        return dano;
     }
-    
+
     @Override
     public void defender() {
         super.defender();

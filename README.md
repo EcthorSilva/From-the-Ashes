@@ -19,6 +19,10 @@ Na versão atual, o jogo é uma aventura em texto ao estilo do clássico Dunnet.
 - Seleção da classe do personagem
 - Combate por turno
 
+### Updates
+
+- Alterei o script de cada um dos personagens para que os danos sejam aleatorios mas com base nos status pré definidos.
+
 ## Como utilizar
 Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java, como Eclipse ou IntelliJ IDEA. Após clonar ou baixar o repositório, abra o projeto na IDE e execute a classe "XXXX" para iniciar o jogo.
 

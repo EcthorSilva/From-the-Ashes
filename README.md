@@ -20,7 +20,14 @@ Na versão atual, o jogo é uma aventura em texto ao estilo do clássico Dunnet.
 - Alterei o script de cada um dos personagens para que os danos sejam aleatorios, mas com base nos status pré definidos;
 - Criei um menu principal onde temos as opções de _Introdução_, _Jogar_, _Créditos_ e _Sair_;
 - Adicionei uma função com o objetivo de limpar o console e auxiliar na leitura das informações;
-- Adicionei uma função que adiciona um pequeno atraso nos textos apresentados no console para dar impressão de jogo antigo.
+- Adicionei uma função que adiciona um pequeno atraso nos textos apresentados no console para dar impressão de jogo antigo;
+- Adicionei um atributo de destreza para ser usado posteriormente;
+- Refiz todo a aventura para dar mais opções ao jogador e deixar o jogo dinâmico.
+
+### Bugs
+
+- O personagem consegue aplicar dano aos monstros, mas os monstros não conseguem tirar dano do personagem;
+- O sistema de defesa não esta funcionando corretamente.
 
 ## Como utilizar
 Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java, como Eclipse ou IntelliJ IDEA. Após clonar ou baixar o repositório, abra o projeto na IDE e execute a classe __"Game.java"__ para iniciar o jogo.

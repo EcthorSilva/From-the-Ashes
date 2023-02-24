@@ -17,7 +17,10 @@ Na versão atual, o jogo é uma aventura em texto ao estilo do clássico Dunnet.
 
 ### Updates
 
-- Alterei o script de cada um dos personagens para que os danos sejam aleatorios, mas com base nos status pré definidos.
+- Alterei o script de cada um dos personagens para que os danos sejam aleatorios, mas com base nos status pré definidos;
+- Criei um menu principal onde temos as opções de _Introdução_, _Jogar_, _Créditos_ e _Sair_;
+- Adicionei uma função com o objetivo de limpar o console e auxiliar na leitura das informações;
+- Adicionei uma função que adiciona um pequeno atraso nos textos apresentados no console para dar impressão de jogo antigo.
 
 ## Como utilizar
 Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java, como Eclipse ou IntelliJ IDEA. Após clonar ou baixar o repositório, abra o projeto na IDE e execute a classe __"Game.java"__ para iniciar o jogo.

@@ -103,13 +103,13 @@ public class Game {
         Personagem personagem = null;
         switch (classeEscolhida) { // Selecionar a classe do personagem
             case 1:
-                personagem = new Guerreiro("guerreiro", 8, 8, 5, 5); // nome, vida, forca, defesa
+                personagem = new Guerreiro("guerreiro", 120, 25, 35, 10); // nome, vida, forca, defesa e destreza
                 break;
             case 2:
-                personagem = new Mago("Mago", 3, 9, 3, 7); // nome, vida, forca, defesa
+                personagem = new Mago("Mago", 65, 30, 30, 15); // nome, vida, forca, defesa e destreza
                 break;
             case 3:
-                personagem = new Arqueiro("Arqueiro", 6, 7, 4, 9); // nome, vida, forca, defesa
+                personagem = new Arqueiro("Arqueiro", 80, 20, 20, 25); // nome, vida, forca, defesa e destreza
                 break;
             default:
                 System.out.println("Opção inválida, saindo...");
@@ -148,6 +148,7 @@ public class Game {
 
                     if (escolha2 == 1) {
                         System.out.println("Você seguiu pelo corredor e encontrou uma sala com um tesouro brilhante!");
+                        System.out.println(" ");
                         System.out.println("Você venceu o jogo! Parabéns!");
                         scanner.nextLine(); // Avança para a próxima linha
                         return;
@@ -173,47 +174,79 @@ public class Game {
                     break;
                 case 3:
                     System.out.println("Você seguiu pela saída à esquerda. Há uma sala cheia de inimigos à sua frente!");
-
+                    
+                    // Geração aleatória do monstro
                     Monstro monstro = gerarMonstroAleatorio();
                     System.out.println("Um " + monstro.getNome() + " apareceu!");
 
+                    System.out.println(" ");
+                    System.out.println("Você tem " + personagem.getVida() + " de vida.");
+                    System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
+                    System.out.println(" ");
+
+                    // Loop da batalha
                     while (personagem.getVida() > 0 && monstro.getVida() > 0) {
                         System.out.println("Escolha sua ação:");
                         System.out.println("1. Atacar");
                         System.out.println("2. Defender");
+                        System.out.println("3. Fugir");
 
                         int acao = scanner.nextInt();
                         scanner.nextLine(); // Avança para a próxima linha
 
                         switch (acao) {
                             case 1:
+                                // ATAQUE
                                 int danoCausado = personagem.atacar();
                                 System.out.println("Você causou " + danoCausado + " de dano!");
                                 monstro.tomarDano(danoCausado);
                                 break;
                             case 2:
+                                // DEFESA
                                 System.out.println("Você se defendeu do ataque do " + monstro.getNome() + "!");
                                 personagem.defender();
                                 break;
+                            case 3:
+                                // TENTAR FUGIR DA BATALHA
+                                double chanceDeFuga = personagem.getDestreza() * 0.05;
+                                if (Math.random() <= chanceDeFuga) {
+                                    System.out.println("Você conseguiu fugir da batalha!");
+                                    return;
+                                } else {
+                                    System.out.println("Você não conseguiu fugir!");
+                                }
+                                break;
                             default:
+                                // AI CÊ TA FORÇANDO A AMIZADE, NÉ AMIGO?
                                 System.out.println("Opção inválida! Tente novamente.");
                                 break;
                         }
+
+                        // Ataque do monstro
                         if (monstro.getVida() > 0) {
                             int danoRecebido = monstro.atacar();
                             System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
                             personagem.tomarDano(danoRecebido);
                         }
 
+                        // Exibe a vida do personagem e do monstro
                         System.out.println("Você tem " + personagem.getVida() + " de vida.");
                         System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
                     }
 
+                    // Verifica se o personagem foi derrotado
                     if (personagem.getVida() <= 0) {
-                        System.out.println("Você foi derrotado pelo " + monstro.getNome() + ". Game Over!");
+                        clearConsole(); // Limpa o console
+
+                        // GAME OVER - PERDEU A BATALHA
+                        System.out.println("GAME OVER! Você foi derrotado pelo " + monstro.getNome() + "!");
+                        System.out.println(" ");
+                        System.out.println("Pressione Enter para voltar ao Menu Principal...");
+                        scanner.nextLine(); // Avança para a próxima linha
                         return;
                     } else {
                         System.out.println("Você derrotou o " + monstro.getNome() + "!");
+                        
                         System.out.println("Há uma passagem secreta na sala.");
                         System.out.println("O que deseja fazer?");
                         System.out.println("1. Seguir pela passagem secreta");
@@ -248,9 +281,9 @@ public class Game {
     public static Monstro gerarMonstroAleatorio() {
         Random rand = new Random();
         String[] nomes = { "Esqueleto", "Orc", "Troll", "Goblin", "Dragão" };
-        int vida = rand.nextInt(100) + 50;
-        int ataque = rand.nextInt(20) + 10;
-        int defesa = rand.nextInt(20) + 10;
+        int vida = rand.nextInt(100) + 50; // Vida do Monstro
+        int ataque = rand.nextInt(20) + 10; // Ataque do Monstro
+        int defesa = rand.nextInt(20) + 10; // Defesa do Monstro
         return new Monstro(nomes[rand.nextInt(nomes.length)], vida, ataque, defesa);
     }
 

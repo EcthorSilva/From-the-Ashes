@@ -18,6 +18,6 @@ public class Guerreiro extends Personagem {
     @Override
     public void defender() {
         super.defender();
-        setForca(getForca() + 1);
+        System.out.println(getNome() + " também recuou com a sua espada em mãos!");
     }
 }

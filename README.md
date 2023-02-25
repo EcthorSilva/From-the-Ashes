@@ -27,11 +27,14 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Adicionei uma função com o objetivo de limpar o console e auxiliar na leitura das informações;
 - Adicionei uma função que adiciona um pequeno atraso nos textos apresentados no console para dar impressão de jogo antigo;
 - Adicionei um atributo de destreza para ser usado posteriormente;
-- Refiz todo a aventura para dar mais opções ao jogador e deixar o jogo dinâmico.
+- Refiz todo a aventura para dar mais opções ao jogador e deixar o jogo dinâmico;
+- Após alguns testes realizei um balanceamento básico para igualar os monstros e o personagem principal.
+- Corrigido o bug em que o monstro tomava dano, mas o personagem principal não (criei o godmode sem querer);
+- Limpei algumas partes do codigo e adicionei comentarios para facilitar a manutenção do mesmo.
 
 #### Bugs
 
-- O personagem consegue aplicar dano aos monstros, mas os monstros não conseguem tirar dano do personagem;
+- ~~O personagem consegue aplicar dano aos monstros, mas os monstros não conseguem tirar dano do personagem;~~
 - O sistema de defesa não esta funcionando corretamente.
 ## Contribuição
 Este projeto foi desenvolvido para fins educacionais, portanto, não aceitamos contribuições para o mesmo. No entanto, sugestões e feedbacks são bem-vindos.

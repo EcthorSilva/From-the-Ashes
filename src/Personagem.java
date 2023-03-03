@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public abstract class Personagem {
     protected String nome;
     private int vida;
@@ -42,11 +40,12 @@ public abstract class Personagem {
     public boolean estaVivo() {
         return vida > 0;
     }
+
     public abstract int atacar();
 
     public void defender() {
-        setDefesa(getDefesa() + 1);
-        System.out.println(getNome() + " se defendeu e aumentou sua defesa!");
+        this.defesa += 10;
+        // System.out.println("Você se prepara para o próximo ataque!");
     }
 
     public void tomarDano(int dano) {

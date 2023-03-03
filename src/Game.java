@@ -196,9 +196,9 @@ public class Game {
     public static Monstro gerarMonstroAleatorio() {
         Random rand = new Random();
         String[] nomes = { "Esqueleto", "Orc", "Troll", "Goblin", "Dragão" };
-        int vida = rand.nextInt(100) + 50; // Vida do Monstro
-        int ataque = rand.nextInt(20) + 10; // Ataque do Monstro
-        int defesa = rand.nextInt(20) + 10; // Defesa do Monstro
+        int vida = rand.nextInt(100) + 100; // Vida do Monstro
+        int ataque = rand.nextInt(20) + 20; // Ataque do Monstro
+        int defesa = rand.nextInt(20) + 20; // Defesa do Monstro
         return new Monstro(nomes[rand.nextInt(nomes.length)], vida, ataque, defesa);
     }
 
@@ -262,11 +262,15 @@ public class Game {
                     break;
             }
 
-            // Ataque do monstro
+            // Ataque do Monstro
             if (monstro.getVida() > 0) {
                 int danoRecebido = monstro.atacar();
-                System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
-                personagem.tomarDano(danoRecebido);
+                if (danoRecebido > 0) {
+                    personagem.tomarDano(danoRecebido);
+                    System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
+                }else{
+                    System.out.println("O " + monstro.getNome() + " não conseguiu te atacar!");
+                }
             }
 
             // Exibe a vida do personagem e do monstro
@@ -283,7 +287,7 @@ public class Game {
             System.out.println(" ");
             System.out.println("Pressione Enter para voltar ao Menu Principal...");
             scanner.nextLine(); // Avança para a próxima linha
-            return;
+            main(null); // Retorna para o inicio do jogo
         } else {
             System.out.println("Você derrotou o " + monstro.getNome() + "!");
             

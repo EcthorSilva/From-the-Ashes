@@ -36,7 +36,7 @@ public abstract class Personagem {
 
     // Destreza
     public int getDestreza() {
-        return vida;
+        return destreza;
     }
 
     public boolean estaVivo() {

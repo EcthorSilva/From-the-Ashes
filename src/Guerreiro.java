@@ -11,13 +11,13 @@ public class Guerreiro extends Personagem {
         int min = getForca() / 2;
         int max = getForca() + getDefesa();
         int dano = rand.nextInt(max - min + 1) + min;
-        System.out.println(getNome() + " atacou com sua espada e causou " + dano + " de dano!");
+        // System.out.println(getNome() + " atacou com sua espada e causou " + dano + " de dano!");
         return dano;
     }
 
     @Override
     public void defender() {
         super.defender();
-        System.out.println(getNome() + " também recuou com a sua espada em mãos!");
+        // System.out.println(getNome() + " também recuou com a sua espada em mãos!");
     }
 }

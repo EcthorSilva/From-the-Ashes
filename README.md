@@ -32,7 +32,11 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Corrigido o bug em que o monstro tomava dano, mas o personagem principal não (criei o godmode sem querer);
 - Limpei algumas partes do codigo e adicionei comentarios para facilitar a manutenção do mesmo;
 - Criei uma função que contém o loop da batalha para poder repeti-lá mais vezes no futuro;
-- Durante a revisão do código percebi que o `getDestreza()` estava retornando para a vida, corrigi e agora o sistema de fuga esta funcionando como deveria. 
+- Durante a revisão do código percebi que o `getDestreza()` estava retornando para a vida, corrigi e agora o sistema de fuga esta funcionando como deveria;
+- Alterei a função `atacar()` do monstro para que funcione da mesma forma que o personagem (Ataque aleatorio com base nos status predefinidos);
+- Alterei a condicional do Ataque do Monstro para caso o valor do dano for igual ou menor que zero ele exiba uma mensagem informando `"O " + monstro.getNome() + " não conseguiu te atacar!"`;
+- Fiz um novo balanceamento nos status dos monstros para dar uma dificuldade elevada ao jogo;
+- Deixei algumas saídas comentadas temporariamente para facilitar a visualização das informações no console enquanto termino de ajustar alguns pontos do jogo.
 
 #### Bugs
 

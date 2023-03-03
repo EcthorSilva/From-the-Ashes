@@ -173,97 +173,11 @@ public class Game {
                     }
                     break;
                 case 3:
-                    System.out.println("Você seguiu pela saída à esquerda. Há uma sala cheia de inimigos à sua frente!");
-                    
+                    System.out.println("Você seguiu pela saída à esquerda. Há uma sala cheia de inimigos à sua frente!");               
                     // Geração aleatória do monstro
                     Monstro monstro = gerarMonstroAleatorio();
-                    System.out.println("Um " + monstro.getNome() + " apareceu!");
-
-                    System.out.println(" ");
-                    System.out.println("Você tem " + personagem.getVida() + " de vida.");
-                    System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
-                    System.out.println(" ");
-
-                    // Loop da batalha
-                    while (personagem.getVida() > 0 && monstro.getVida() > 0) {
-                        System.out.println("Escolha sua ação:");
-                        System.out.println("1. Atacar");
-                        System.out.println("2. Defender");
-                        System.out.println("3. Fugir");
-
-                        int acao = scanner.nextInt();
-                        scanner.nextLine(); // Avança para a próxima linha
-
-                        switch (acao) {
-                            case 1:
-                                // ATAQUE
-                                int danoCausado = personagem.atacar();
-                                System.out.println("Você causou " + danoCausado + " de dano!");
-                                monstro.tomarDano(danoCausado);
-                                break;
-                            case 2:
-                                // DEFESA
-                                System.out.println("Você se defendeu do ataque do " + monstro.getNome() + "!");
-                                personagem.defender();
-                                break;
-                            case 3:
-                                // TENTAR FUGIR DA BATALHA
-                                double chanceDeFuga = personagem.getDestreza() * 0.05;
-                                if (Math.random() <= chanceDeFuga) {
-                                    System.out.println("Você conseguiu fugir da batalha!");
-                                    return;
-                                } else {
-                                    System.out.println("Você não conseguiu fugir!");
-                                }
-                                break;
-                            default:
-                                // AI CÊ TA FORÇANDO A AMIZADE, NÉ AMIGO?
-                                System.out.println("Opção inválida! Tente novamente.");
-                                break;
-                        }
-
-                        // Ataque do monstro
-                        if (monstro.getVida() > 0) {
-                            int danoRecebido = monstro.atacar();
-                            System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
-                            personagem.tomarDano(danoRecebido);
-                        }
-
-                        // Exibe a vida do personagem e do monstro
-                        System.out.println("Você tem " + personagem.getVida() + " de vida.");
-                        System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
-                    }
-
-                    // Verifica se o personagem foi derrotado
-                    if (personagem.getVida() <= 0) {
-                        clearConsole(); // Limpa o console
-
-                        // GAME OVER - PERDEU A BATALHA
-                        System.out.println("GAME OVER! Você foi derrotado pelo " + monstro.getNome() + "!");
-                        System.out.println(" ");
-                        System.out.println("Pressione Enter para voltar ao Menu Principal...");
-                        scanner.nextLine(); // Avança para a próxima linha
-                        return;
-                    } else {
-                        System.out.println("Você derrotou o " + monstro.getNome() + "!");
-                        
-                        System.out.println("Há uma passagem secreta na sala.");
-                        System.out.println("O que deseja fazer?");
-                        System.out.println("1. Seguir pela passagem secreta");
-                        System.out.println("2. Voltar para a sala anterior");
-
-                        int escolha4 = scanner.nextInt();
-                        scanner.nextLine();
-
-                        if (escolha4 == 1) {
-                            System.out.println("Você seguiu pela passagem secreta e encontrou uma sala com um tesouro brilhante!");
-                            System.out.println("Você venceu o jogo! Parabéns!");
-                            scanner.nextLine(); // Avança para a próxima linha
-                            return;
-                        } else {
-                            System.out.println("Você voltou para a sala anterior.");
-                        }
-                    }
+                    // Loop da Batalha
+                    loopBatalha(personagem, monstro, scanner);
                     break;
                 case 4:
                     System.out.println("Você fugiu da masmorra. Fim de jogo!");
@@ -275,6 +189,7 @@ public class Game {
             }
         }
     }
+
     // Funções/Métodos Auxiliares //
 
     // Gerador de monstros aleatorios
@@ -299,5 +214,95 @@ public class Game {
     private static void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+    // Função para iniciar o loop da batalha
+    public static void loopBatalha(Personagem personagem, Monstro monstro, Scanner scanner) {
+        System.out.println("Um " + monstro.getNome() + " apareceu!");
+
+        System.out.println(" ");
+        System.out.println("Você tem " + personagem.getVida() + " de vida.");
+        System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
+        System.out.println(" ");
+        
+        // Loop da batalha
+        while (personagem.getVida() > 0 && monstro.getVida() > 0) {
+            System.out.println("Escolha sua ação:");
+            System.out.println("1. Atacar");
+            System.out.println("2. Defender");
+            System.out.println("3. Fugir");
+
+            int acao = scanner.nextInt();
+            scanner.nextLine(); // Avança para a próxima linha
+
+            switch (acao) {
+                case 1:
+                    // ATAQUE
+                    int danoCausado = personagem.atacar();
+                    System.out.println("Você causou " + danoCausado + " de dano!");
+                    monstro.tomarDano(danoCausado);
+                    break;
+                case 2:
+                    // DEFESA
+                    System.out.println("Você se defendeu do ataque do " + monstro.getNome() + "!");
+                    personagem.defender();
+                    break;
+                case 3:
+                    // TENTAR FUGIR DA BATALHA
+                    double chanceDeFuga = personagem.getDestreza() * 0.05;
+                    if (Math.random() <= chanceDeFuga) {
+                        System.out.println("Você conseguiu fugir da batalha!");
+                        return;
+                    } else {
+                        System.out.println("Você não conseguiu fugir!");
+                    }
+                    break;
+                default:
+                    // AI CÊ TA FORÇANDO A AMIZADE, NÉ AMIGO?
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
+            }
+
+            // Ataque do monstro
+            if (monstro.getVida() > 0) {
+                int danoRecebido = monstro.atacar();
+                System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
+                personagem.tomarDano(danoRecebido);
+            }
+
+            // Exibe a vida do personagem e do monstro
+            System.out.println("Você tem " + personagem.getVida() + " de vida.");
+            System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
+        }
+
+        // Verifica se o personagem foi derrotado
+        if (personagem.getVida() <= 0) {
+            clearConsole(); // Limpa o console
+
+            // GAME OVER - PERDEU A BATALHA
+            System.out.println("GAME OVER! Você foi derrotado pelo " + monstro.getNome() + "!");
+            System.out.println(" ");
+            System.out.println("Pressione Enter para voltar ao Menu Principal...");
+            scanner.nextLine(); // Avança para a próxima linha
+            return;
+        } else {
+            System.out.println("Você derrotou o " + monstro.getNome() + "!");
+            
+            System.out.println("Há uma passagem secreta na sala.");
+            System.out.println("O que deseja fazer?");
+            System.out.println("1. Seguir pela passagem secreta");
+            System.out.println("2. Voltar para a sala anterior");
+
+            int escolha4 = scanner.nextInt();
+            scanner.nextLine();
+
+            if (escolha4 == 1) {
+                System.out.println("Você seguiu pela passagem secreta e encontrou uma sala com um tesouro brilhante!");
+                System.out.println("Você venceu o jogo! Parabéns!");
+                scanner.nextLine(); // Avança para a próxima linha
+                main(null); // Retorna para o inicio do jogo
+            } else {
+                System.out.println("Você voltou para a sala anterior.");
+            }
+        }
     }
 }

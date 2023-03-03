@@ -30,7 +30,8 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Refiz todo a aventura para dar mais opções ao jogador e deixar o jogo dinâmico;
 - Após alguns testes realizei um balanceamento básico para igualar os monstros e o personagem principal.
 - Corrigido o bug em que o monstro tomava dano, mas o personagem principal não (criei o godmode sem querer);
-- Limpei algumas partes do codigo e adicionei comentarios para facilitar a manutenção do mesmo.
+- Limpei algumas partes do codigo e adicionei comentarios para facilitar a manutenção do mesmo;
+- Criei uma função que contém o loop da batalha para poder repeti-lá mais vezes no futuro.
 
 #### Bugs
 

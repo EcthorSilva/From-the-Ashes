@@ -1,10 +1,10 @@
 public abstract class Personagem {
     protected String nome;
-    private int vida;
-    private int forca;
-    private int defesa;
-    private int destreza;
-    private boolean defendendo;
+    protected int vida;
+    protected int forca;
+    protected int defesa;
+    protected int destreza;
+    protected boolean defendendo;
 
     public Personagem(String nome, int vida, int forca, int defesa, int destreza) {
         this.nome = nome;
@@ -14,6 +14,8 @@ public abstract class Personagem {
         this.destreza = destreza;
     }
 
+    // Getters e Setters
+    // Nome
     public String getNome() {
         return nome;
     }
@@ -21,9 +23,15 @@ public abstract class Personagem {
     public int getVida() {
         return vida;
     }
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
     // Força
     public int getForca() {
         return forca;
+    }
+    public void setForca(int forca) {
+        this.forca = forca;
     }
     // Defesa
     public int getDefesa() {
@@ -32,22 +40,17 @@ public abstract class Personagem {
     public void setDefesa(int defesa) {
         this.defesa = defesa;
     }
-
     // Destreza
     public int getDestreza() {
         return destreza;
     }
-
-    public boolean estaVivo() {
-        return vida > 0;
+    public void setDestreza(int destreza) {
+        this.destreza = destreza;
     }
-
-    public abstract int atacar();
 
     public void defender() {
         this.defendendo = true;
     }
-
     public void tomarDano(int dano) {
         if (defendendo) {
             dano /= 2;
@@ -55,4 +58,5 @@ public abstract class Personagem {
         }
         this.vida -= dano;
     }
+    public abstract int atacar();
 }

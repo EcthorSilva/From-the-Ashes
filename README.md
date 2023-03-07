@@ -37,7 +37,8 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Alterei a condicional do Ataque do Monstro para caso o valor do dano for igual ou menor que zero ele exiba uma mensagem informando `"O " + monstro.getNome() + " não conseguiu te atacar!"`;
 - Fiz um novo balanceamento nos status dos monstros para dar uma dificuldade elevada ao jogo;
 - Deixei algumas saídas comentadas temporariamente para facilitar a visualização das informações no console enquanto termino de ajustar alguns pontos do jogo;
-- Alterei o sistema de defesa para o personagem só tomar metade do dano quando estiver defendendo.
+- Alterei o sistema de defesa para o personagem só tomar metade do dano quando estiver defendendo;
+- Iniciei o processo de refatoração do código começando com a classe personagem.
 
 #### Bugs
 

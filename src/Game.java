@@ -243,7 +243,7 @@ public class Game {
                     break;
                 case 2:
                     // DEFESA
-                    System.out.println("Você se defendeu do ataque do " + monstro.getNome() + "!");
+                    System.out.println("Você está defendendo do ataque do " + monstro.getNome() + " e receberá apenas metade do dano!");
                     personagem.defender();
                     break;
                 case 3:

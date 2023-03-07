@@ -4,6 +4,7 @@ public abstract class Personagem {
     private int forca;
     private int defesa;
     private int destreza;
+    private boolean defendendo;
 
     public Personagem(String nome, int vida, int forca, int defesa, int destreza) {
         this.nome = nome;
@@ -44,11 +45,14 @@ public abstract class Personagem {
     public abstract int atacar();
 
     public void defender() {
-        this.defesa += 10;
-        // System.out.println("Você se prepara para o próximo ataque!");
+        this.defendendo = true;
     }
 
     public void tomarDano(int dano) {
-        vida -= dano;
+        if (defendendo) {
+            dano /= 2;
+            defendendo = false;
+        }
+        this.vida -= dano;
     }
 }

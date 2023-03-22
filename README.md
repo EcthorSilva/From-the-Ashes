@@ -39,9 +39,9 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Deixei algumas saídas comentadas temporariamente para facilitar a visualização das informações no console enquanto termino de ajustar alguns pontos do jogo;
 - Alterei o sistema de defesa para o personagem só tomar metade do dano quando estiver defendendo;
 - Iniciei o processo de refatoração do código começando com a classe personagem;
-- Fiz algumas alterações na classe `Game.Java` com o intuito de facilitar a leitura do jogador durante o jogo;
+- Fiz algumas alterações na classe `Game.Java` adicionando a função a função `clearConsole()` e `delay()` com o intuito de facilitar a leitura do jogador durante o jogo;
 - Criei uma função para exibir a vida do personagem e do monstro, assim podemos tomar melhores decisões durante a batalha;
-- Adicionei a função `clearConsole()` e `delay()` para melhorar a experiencia do usuario que esta lendo o terminal.
+- Adicionei um status de defesa para o personagem, agora é exibido o dano pela metade caso o status de defesa seja verdadeiro.
 
 #### Bugs
 

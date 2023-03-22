@@ -247,6 +247,9 @@ public class Game {
         System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
         System.out.println(" ");
 
+        // Variavel para saber se o personagem esta ou não defendendo
+        boolean defendendo = false;
+
         // Loop da batalha
         while (personagem.getVida() > 0 && monstro.getVida() > 0) {
             System.out.println("Escolha sua ação:");
@@ -269,6 +272,7 @@ public class Game {
                     clearConsole(); // Limpa o console
                     // DEFESA
                     System.out.println("Você está defendendo do ataque do " + monstro.getNome() + " e receberá apenas metade do dano!");
+                    defendendo = true; // Atribui o valor verdadeiro a variavel defendendo
                     System.out.println("");
                     personagem.defender();
                     break;
@@ -286,7 +290,7 @@ public class Game {
                     }
                     break;
                 default:
-                    clearConsole(); // Limpa o console 
+                    clearConsole(); // Limpa o console
                     // AI CÊ TA FORÇANDO A AMIZADE, NÉ AMIGO?
                     System.out.println("Opção inválida! Tente novamente.");
                     System.out.println("");
@@ -298,8 +302,16 @@ public class Game {
                 int danoRecebido = monstro.atacar();
                 if (danoRecebido > 0) {
                     personagem.tomarDano(danoRecebido);
-                    System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
-                }else{
+                    // Condicional que verifica se o status defendendo é diferente de falso
+                    if (defendendo != false) {
+                        // Caso seja diferente de falso ele mostra o valor do dano recebido dividido por dois e atribui o valor falso para o status defendendo.
+                        System.out.println("O " + monstro.getNome() + " causou " + (danoRecebido / 2) + " de dano!");
+                        defendendo = false; // Atribui o valor falso a variavel defendendo
+                    } else {
+                        System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
+                    }
+
+                } else {
                     System.out.println("O " + monstro.getNome() + " não conseguiu te atacar!");
                 }
             }

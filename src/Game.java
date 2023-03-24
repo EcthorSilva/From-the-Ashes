@@ -10,7 +10,7 @@ public class Game {
         clearConsole(); // Limpa o console
         System.out.println("Bem-vindo ao Souls.txt");
         System.out.println(" ");
-        System.out.printf("Pressione Enter para iniciar o jogo...");
+        System.out.print("Pressione Enter para iniciar o jogo...");
         scanner.nextLine(); // Avança para a próxima linha
         System.out.println(" ");
         
@@ -25,6 +25,7 @@ public class Game {
             System.out.println("3. Créditos");
             System.out.println("4. Sair");
 
+            System.out.printf("\n>"); // Indica onde o usuario irá digitar
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Avança para a próxima linha
             
@@ -38,7 +39,7 @@ public class Game {
                     System.out.println("Durante a jornada, você encontrará monstros que precisará derrotar para avançar. Use as opções 'Atacar' e 'Defender' para lutar contra eles.");
                     delay(1500); // Adiciona atraso 
                     System.out.println(" ");
-                    System.out.printf("Pressione Enter para continuar...");
+                    System.out.print("Pressione Enter para continuar...");
                     scanner.nextLine(); // Avança para a próxima linha
                     System.out.println(" ");
                     break;
@@ -54,7 +55,7 @@ public class Game {
                     System.out.println("Desenvolvido por: Ecthor Silva");
                     delay(1500); // Adiciona atraso 
                     System.out.println(" ");
-                    System.out.printf("Pressione Enter para continuar...");
+                    System.out.print("Pressione Enter para continuar...");
                     scanner.nextLine(); // Avança para a próxima linha
                     System.out.println(" ");
                     break;
@@ -68,7 +69,7 @@ public class Game {
                     break;
                 default:
                     clearConsole(); // Limpa o console
-                    System.out.printf("Opção inválida, pressione Enter para tentar novamente!");
+                    System.out.print("Opção inválida, pressione Enter para tentar novamente!");
                     scanner.nextLine(); // Avança para a próxima linha
                     System.out.println(" ");
             }
@@ -79,7 +80,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
 
         clearConsole(); // Limpa o console
-        System.out.printf("Carregando...");
+        System.out.print("Carregando...");
         delay(1000); // Adiciona atraso 
         clearConsole(); // Limpa o console
         delay(1000); // Adiciona atraso 
@@ -96,6 +97,7 @@ public class Game {
         System.out.println("2. Mago");
         System.out.println("3. Arqueiro");
 
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
         int classeEscolhida = scanner.nextInt();
         scanner.nextLine(); // Avança para a próxima linha
 
@@ -117,9 +119,8 @@ public class Game {
         }
         // Informa a classe que você escolheu
         clearConsole(); // Limpa o console
-        System.out.println("Você escolheu a classe " + personagem.getNome() + ".");
+        System.out.printf("Você escolheu a classe %s.\n", personagem.getNome());
         delay(1500); // Adiciona atraso 
-        System.out.println("");
 
         // Inicio da aventura
         System.out.println("Você entrou na masmorra...");
@@ -136,6 +137,7 @@ public class Game {
             System.out.println("3. Seguir pela saída à esquerda");
             System.out.println("4. Fugir da masmorra");
 
+            System.out.printf("\n>"); // Indica onde o usuario irá digitar
             int escolha = scanner.nextInt();
             scanner.nextLine(); // Avança para a próxima linha
 
@@ -149,6 +151,7 @@ public class Game {
                     System.out.println("1. Seguir em frente");
                     System.out.println("2. Voltar para a sala anterior");
 
+                    System.out.printf("\n>"); // Indica onde o usuario irá digitar
                     int escolha2 = scanner.nextInt();
                     scanner.nextLine(); // Avança para a próxima linha
 
@@ -173,6 +176,7 @@ public class Game {
                     System.out.println("1. Procurar por itens");
                     System.out.println("2. Voltar para a sala anterior");
 
+                    System.out.printf("\n>"); // Indica onde o usuario irá digitar
                     int escolha3 = scanner.nextInt();
                     scanner.nextLine(); // Avança para a próxima linha
 
@@ -217,7 +221,6 @@ public class Game {
         int defesa = rand.nextInt(20) + 20; // Defesa do Monstro
         return new Monstro(nomes[rand.nextInt(nomes.length)], vida, ataque, defesa);
     }
-
     // Função para adicionar delay aos textos do console
     public static void delay(int milliseconds){
         try{
@@ -234,18 +237,48 @@ public class Game {
     // Função que exibe a vida do personagem e do monstro
     public static void cont(Personagem personagem, Monstro monstro){
         System.out.println("");
-        System.out.println("Você tem " + personagem.getVida() + " de vida.");
-        System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
+        System.out.printf("Você tem %d de vida.\n", personagem.vida);
+        System.out.printf("O %s tem %d de vida.\n", monstro.getNome(), monstro.getVida());
         System.out.println("");
+    }
+    // Função para verificar se o personagem foi derrotado
+    public static void VerificarPersonagem(Personagem personagem, Monstro monstro, Scanner scanner){
+        // Verifica se o personagem foi derrotado
+        if (personagem.getVida() <= 0) {
+            // GAME OVER - PERDEU A BATALHA
+            System.out.printf("GAME OVER! Você foi derrotado pelo %s!\n", monstro.getNome());
+            System.out.println(" ");
+            System.out.println("Pressione Enter para voltar ao Menu Principal...");
+            scanner.nextLine(); // Avança para a próxima linha
+            main(null); // Retorna para o inicio do jogo
+        } else {
+            System.out.printf("Você derrotou o %s!\n", monstro.getNome());
+            System.out.println("");
+            System.out.println("Há uma passagem secreta na sala.");
+            System.out.println("O que deseja fazer?");
+            System.out.println("");
+            System.out.println("1. Seguir pela passagem secreta");
+            System.out.println("2. Voltar para a sala anterior");
+
+            System.out.printf("\n>"); // Indica onde o usuario irá digitar
+            int escolha4 = scanner.nextInt();
+            scanner.nextLine(); // Avança para a próxima linha
+
+            if (escolha4 == 1) {
+                System.out.println("Você seguiu pela passagem secreta e encontrou uma sala com um tesouro brilhante!");
+                System.out.println("Você venceu o jogo! Parabéns!");
+                scanner.nextLine(); // Avança para a próxima linha
+                main(null); // Retorna para o inicio do jogo
+            } else {
+                System.out.println("Você voltou para a sala anterior.");
+            }
+        }
     }
     // Função para iniciar o loop da batalha
     public static void loopBatalha(Personagem personagem, Monstro monstro, Scanner scanner) {
-        System.out.println("Um " + monstro.getNome() + " apareceu!");
+        System.out.printf("Um %s apareceu!\n", monstro.getNome());
 
-        System.out.println(" ");
-        System.out.println("Você tem " + personagem.getVida() + " de vida.");
-        System.out.println("O " + monstro.getNome() + " tem " + monstro.getVida() + " de vida.");
-        System.out.println(" ");
+        cont(personagem, monstro); // Exibe a vida do personagem e do monstro
 
         // Variavel para saber se o personagem esta ou não defendendo
         boolean defendendo = false;
@@ -257,6 +290,7 @@ public class Game {
             System.out.println("2. Defender");
             System.out.println("3. Fugir");
 
+            System.out.printf("\n>"); // Indica onde o usuario irá digitar
             int acao = scanner.nextInt();
             scanner.nextLine(); // Avança para a próxima linha
 
@@ -265,13 +299,13 @@ public class Game {
                     clearConsole(); // Limpa o console
                     // ATAQUE
                     int danoCausado = personagem.atacar();
-                    System.out.println("Você causou " + danoCausado + " de dano!");
+                    System.out.printf("Você causou %d de dano!\n", danoCausado);
                     monstro.tomarDano(danoCausado);
                     break;
                 case 2:
                     clearConsole(); // Limpa o console
                     // DEFESA
-                    System.out.println("Você está defendendo do ataque do " + monstro.getNome() + " e receberá apenas metade do dano!");
+                    System.out.printf("Você está defendendo do ataque do %s e receberá apenas metade do dano!\n", monstro.getNome());
                     defendendo = true; // Atribui o valor verdadeiro a variavel defendendo
                     System.out.println("");
                     personagem.defender();
@@ -290,8 +324,8 @@ public class Game {
                     }
                     break;
                 default:
-                    clearConsole(); // Limpa o console
                     // AI CÊ TA FORÇANDO A AMIZADE, NÉ AMIGO?
+                    clearConsole(); // Limpa o console
                     System.out.println("Opção inválida! Tente novamente.");
                     System.out.println("");
                     break;
@@ -305,47 +339,19 @@ public class Game {
                     // Condicional que verifica se o status defendendo é diferente de falso
                     if (defendendo != false) {
                         // Caso seja diferente de falso ele mostra o valor do dano recebido dividido por dois e atribui o valor falso para o status defendendo.
-                        System.out.println("O " + monstro.getNome() + " causou " + (danoRecebido / 2) + " de dano!");
+                        System.out.printf("O %s causou %d de dano!\n", monstro.getNome(), (danoRecebido / 2));
+                        
                         defendendo = false; // Atribui o valor falso a variavel defendendo
                     } else {
-                        System.out.println("O " + monstro.getNome() + " causou " + danoRecebido + " de dano!");
+                        System.out.printf("O %s causou %d de dano!\n", monstro.getNome(), danoRecebido);
                     }
 
                 } else {
-                    System.out.println("O " + monstro.getNome() + " não conseguiu te atacar!");
+                    System.out.printf("O %s não conseguiu te atacar!\n", monstro.getNome());
                 }
             }
             cont(personagem, monstro); // Exibe a vida do personagem e do monstro
         }
-
-        // Verifica se o personagem foi derrotado
-        if (personagem.getVida() <= 0) {
-            // GAME OVER - PERDEU A BATALHA
-            System.out.println("GAME OVER! Você foi derrotado pelo " + monstro.getNome() + "!");
-            System.out.println(" ");
-            System.out.println("Pressione Enter para voltar ao Menu Principal...");
-            scanner.nextLine(); // Avança para a próxima linha
-            main(null); // Retorna para o inicio do jogo
-        } else {
-            System.out.println("Você derrotou o " + monstro.getNome() + "!");
-            System.out.println("");
-            System.out.println("Há uma passagem secreta na sala.");
-            System.out.println("O que deseja fazer?");
-            System.out.println("");
-            System.out.println("1. Seguir pela passagem secreta");
-            System.out.println("2. Voltar para a sala anterior");
-
-            int escolha4 = scanner.nextInt();
-            scanner.nextLine(); // Avança para a próxima linha
-
-            if (escolha4 == 1) {
-                System.out.println("Você seguiu pela passagem secreta e encontrou uma sala com um tesouro brilhante!");
-                System.out.println("Você venceu o jogo! Parabéns!");
-                scanner.nextLine(); // Avança para a próxima linha
-                main(null); // Retorna para o inicio do jogo
-            } else {
-                System.out.println("Você voltou para a sala anterior.");
-            }
-        }
+        VerificarPersonagem(personagem, monstro, scanner); // Verificar se o personagem foi derrotado
     }
 }

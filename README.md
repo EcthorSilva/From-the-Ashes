@@ -19,9 +19,7 @@ Na versão atual, o jogo é uma aventura em texto ao estilo do clássico Dunnet.
 ## Como utilizar
 Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java, como Eclipse ou IntelliJ IDEA. Após clonar ou baixar o repositório, abra o projeto na IDE e execute a classe __"Game.java"__ para iniciar o jogo.
 
-## Updates & Bugs
-#### Updates
-
+## Updates
 - Alterei o script de cada um dos personagens para que os danos sejam aleatórios, mas com base nos status predefinidos;
 - Criei um menu principal onde temos as opções de _Introdução_, _Jogar_, _Créditos_ e _Sair_;
 - Adicionei uma função com o objetivo de limpar o console e auxiliar na leitura das informações;
@@ -41,12 +39,9 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Iniciei o processo de refatoração do código começando com a classe personagem;
 - Fiz algumas alterações na classe `Game.Java` adicionando a função a função `clearConsole()` e `delay()` com o intuito de facilitar a leitura do jogador durante o jogo;
 - Criei uma função para exibir a vida do personagem e do monstro, assim podemos tomar melhores decisões durante a batalha;
-- Adicionei um status de defesa para o personagem, agora é exibido o dano pela metade caso o status de defesa seja verdadeiro.
-
-#### Bugs
-
-- ~~O personagem consegue aplicar dano aos monstros, mas os monstros não conseguem tirar dano do personagem;~~
-- O sistema de defesa não esta funcionando corretamente.
+- Adicionei um status de defesa para o personagem, agora é exibido o dano pela metade caso o status de defesa seja verdadeiro;
+- Troquei alguns `println` para `printf`;
+- Criei uma função para saber se o personagem ainda esta vivo.
 ## Contribuição
 Este projeto foi desenvolvido para fins educacionais, portanto, não aceitamos contribuições para o mesmo. No entanto, sugestões e feedbacks são bem-vindos.
 

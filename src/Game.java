@@ -32,11 +32,9 @@ public class Game {
             switch (opcao) {
                 case 1:
                     clearConsole(); // Limpa o console
-                    System.out.println("Introdução:");
-                    System.out.println(" ");
-                    delay(1500); // Adiciona atraso 
-                    System.out.println("Você é um aventureiro em busca do tesouro lendário que se encontra em um castelo antigo. Para chegar lá, você precisa passar por uma estrada perigosa cheia de monstros ferozes.");
-                    System.out.println("Durante a jornada, você encontrará monstros que precisará derrotar para avançar. Use as opções 'Atacar' e 'Defender' para lutar contra eles.");
+                    System.out.printf("-- INTRODUÇÃO --\n");
+                    System.out.printf("\nEste jogo se passa em um mundo governado por deuses, onde humanos e criaturas das trevas lutam pela sobrevivência. \nUm grande demônio, conhecido como Rei Demônio, lidera um exército de monstros e demônios das profundezas do submundo, ameaçando o mundo e marcando possivelmente o seu fim. \nPara salvar a humanidade você precisará lutar contra monstros poderosos e se aprofundar cada vez mais neste universo.\n");
+                    System.out.printf("\nDurante a sua aventura, você irá se deparar com diversos monstros que precisam ser derrotados para que você possa avançar na história. \nPara enfrentá-los, você terá a opção de atacar, defender ou até mesmo fugir. \nSuas escolhas durante as batalhas serão cruciais para o resultado final e para o seu progresso na jornada. \n\nPortanto, escolha sabiamente e use suas habilidades e recursos com cautela para vencer essas batalhas épicas. \nBoa sorte!\n\n");
                     delay(1500); // Adiciona atraso 
                     System.out.println(" ");
                     System.out.print("Pressione Enter para continuar...");
@@ -49,7 +47,7 @@ public class Game {
                     break;
                 case 3:
                     clearConsole(); // Limpa o console
-                    System.out.println("Créditos:");
+                    System.out.printf("--CRÉDITOS--");
                     delay(1000); // Adiciona atraso 
                     System.out.println(" ");
                     System.out.println("Desenvolvido por: Ecthor Silva");
@@ -75,7 +73,7 @@ public class Game {
             }
         }
     }
-
+    // Iniciando o jogo
     public static void jogar(){
         Scanner scanner = new Scanner(System.in);
 
@@ -84,11 +82,74 @@ public class Game {
         delay(1000); // Adiciona atraso 
         clearConsole(); // Limpa o console
         delay(1000); // Adiciona atraso 
-        System.out.println("Você é um aventureiro em busca do tesouro lendário que se encontra em um castelo antigo. Para chegar lá, você precisa passar por uma jornada longa e perigosa, cheia de monstros ferozes.");
+        System.out.printf("Era uma vez um mundo governado por deuses poderosos, onde humanos e criaturas das trevas lutavam pela sobrevivência. \nA humanidade vivia em cidades fortificadas, protegidas por muros altos e magia antiga. No entanto, mesmo com todos esses recursos, uma ameaça se aproximava do horizonte.\n");
+        delay(1000); // Adiciona atraso
+        System.out.println(" ");
+        System.out.printf("Rumores surgiram de que um grande demônio estava se aproximando, liderando um exército de monstros e demônios das profundezas do submundo. \nO demônio era conhecido como o Rei Demônio e muitos acreditavam que sua chegada marcaria o fim do mundo.\n");
         delay(1500); // Adiciona atraso
-        System.out.println("Antes de iniciar sua jornada é necessario escolher sua classe.");
-        System.out.println("Escolha com sabedoria.");
+        
+        // Criar personagem
+        Personagem personagem = criarPersonagem(scanner);
 
+        System.out.println("");
+        delay(1500);
+        System.out.printf("-- ATO I --\n");
+        System.out.println("");
+        delay(1500);
+        // teste
+        visitarTaverna(personagem, scanner);
+
+        explorarFloresta(personagem, scanner);
+    }
+
+    // ATO I - Parte 1
+    public static void visitarTaverna(Personagem personagem, Scanner scanner) {
+        System.out.printf("Você estava caminhando pela estrada durante a noite, sentindo-se exausto e faminto. Avistou uma avistou uma taverna e, mesmo hesitante, decidiu entrar para descansar um pouco. \nAo entrar, você percebe que o local estava relativamente vazio, com apenas algumas pessoas sentadas em mesas espalhadas pelo ambiente. Você se senta no balcão e pede uma bebida ao garçom.\n");
+        System.out.printf("\nEnquanto descansa, você percebe que tem um homem misterioso sentado em uma mesa no canto da taverna. O homem parecia estar te observando com bastante interesse. \nO homem misterioso se aproxima de você e oferece uma missão arriscada, mas altamente lucrativa, ele diz precisa de alguém para recuperar um objeto valioso em uma caverna perigosa e está disposto a pagar generosamente por isso.");
+        System.out.printf("\n\nA decisão é sua. Você pode aceitar a missão e enfrentar os perigos da caverna, ou recusar e seguir em frente em sua jornada.\n\n");
+        System.out.println("1. Aceitar a missão.");
+        System.out.println("2. Recusar a missão.");
+        
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = scanner.nextInt();
+        scanner.nextLine(); // Avança para a próxima linha
+        
+        if (escolha == 1) {
+            System.out.printf("\nVocê aceita a missão e se prepara para partir no dia seguinte.");
+            System.out.println("1");
+            scanner.nextLine(); // Avança para a próxima linha
+            clearConsole();
+            System.out.println("2");
+        } else if (escolha == 2) {
+            clearConsole();
+            System.out.println("Você recusa a missão e decide procurar outra oportunidade.");
+            scanner.nextLine(); // Avança para a próxima linha
+            explorarFloresta(personagem, scanner);
+        } else {
+            System.out.println("Escolha inválida!");
+            visitarTaverna(personagem, scanner);
+            scanner.nextLine(); // Avança para a próxima linha
+        }
+    }
+    public static void explorarFloresta(Personagem personagem, Scanner scanner) {
+        System.out.println("Você caminha pela floresta e encontra uma caverna escura.");
+        System.out.println("Você entra na caverna e encontra um tesouro antigo!");
+        System.out.println("Você decide levar o tesouro e voltar para a cidade.");
+        clearConsole(); // Limpa o console
+        System.out.println("Você seguiu pela saída à esquerda. Há uma sala cheia de inimigos à sua frente!");               
+        // Geração aleatória do monstro
+        Monstro monstro = gerarMonstroAleatorio();
+        // Loop da Batalha
+        loopBatalha(personagem, monstro, scanner);
+        System.out.println("Fim do primeiro ato!");
+        scanner.nextLine(); // Avança para a próxima linha
+    }
+
+    // Funções/Métodos Auxiliares //
+    
+    // Seleção da Classe do personagem
+    public static Personagem criarPersonagem(Scanner scanner) {
+        System.out.printf("\nAntes de iniciar você precisará selecionar cuidadosamente sua classe. \nSeu treinamento e habilidades em batalha serão essenciais para superar os desafios que encontrará em sua jornada.\n");
         System.out.println("");
         delay(1500); // Adiciona atraso 
         System.out.println("Escolha sua classe: ");
@@ -96,11 +157,11 @@ public class Game {
         System.out.println("1. Guerreiro");
         System.out.println("2. Mago");
         System.out.println("3. Arqueiro");
-
+    
         System.out.printf("\n>"); // Indica onde o usuario irá digitar
         int classeEscolhida = scanner.nextInt();
         scanner.nextLine(); // Avança para a próxima linha
-
+    
         // Escolha de classe
         Personagem personagem = null;
         switch (classeEscolhida) { // Selecionar a classe do personagem
@@ -117,101 +178,14 @@ public class Game {
                 System.out.println("Opção inválida, saindo...");
                 System.exit(0);
         }
-        // Informa a classe que você escolheu
+
         clearConsole(); // Limpa o console
         System.out.printf("Você escolheu a classe %s.\n", personagem.getNome());
         delay(1500); // Adiciona atraso 
 
-        // Inicio da aventura
-        System.out.println("Você entrou na masmorra...");
-        System.out.println("");
-        System.out.println("Após caminhar um pouco você consegue chegar ao final do corredor.");
-        System.out.println("Lá, você encontra uma porta à sua frente e duas saídas, uma à direita e outra à esquerda.");
-        System.out.println("");
-
-        while (true) {
-            System.out.println("O que deseja fazer?");
-            System.out.println("");
-            System.out.println("1. Abrir a porta à frente");
-            System.out.println("2. Seguir pela saída à direita");
-            System.out.println("3. Seguir pela saída à esquerda");
-            System.out.println("4. Fugir da masmorra");
-
-            System.out.printf("\n>"); // Indica onde o usuario irá digitar
-            int escolha = scanner.nextInt();
-            scanner.nextLine(); // Avança para a próxima linha
-
-            switch (escolha) {
-                case 1:
-                    clearConsole(); // Limpa o console
-                    System.out.println("Você abriu a porta à sua frente. Há um corredor escuro à sua frente.");
-                    System.out.println("");
-                    System.out.println("O que deseja fazer?");
-                    System.out.println("");
-                    System.out.println("1. Seguir em frente");
-                    System.out.println("2. Voltar para a sala anterior");
-
-                    System.out.printf("\n>"); // Indica onde o usuario irá digitar
-                    int escolha2 = scanner.nextInt();
-                    scanner.nextLine(); // Avança para a próxima linha
-
-                    if (escolha2 == 1) {
-                        clearConsole(); // Limpa o console
-                        System.out.println("Você seguiu pelo corredor e encontrou uma sala com um tesouro brilhante!");
-                        System.out.println(" ");
-                        System.out.println("Você venceu o jogo! Parabéns!");
-                        scanner.nextLine(); // Avança para a próxima linha
-                        return;
-                    } else {
-                        clearConsole(); // Limpa o console
-                        System.out.println("Você voltou para a sala anterior.");
-                    }
-                    break;
-                case 2:
-                    clearConsole(); // Limpa o console
-                    System.out.println("Você seguiu pela saída à direita. Há uma sala vazia à sua frente.");
-                    System.out.println("");
-                    System.out.println("O que deseja fazer?");
-                    System.out.println("");
-                    System.out.println("1. Procurar por itens");
-                    System.out.println("2. Voltar para a sala anterior");
-
-                    System.out.printf("\n>"); // Indica onde o usuario irá digitar
-                    int escolha3 = scanner.nextInt();
-                    scanner.nextLine(); // Avança para a próxima linha
-
-                    if (escolha3 == 1) {
-                        clearConsole(); // Limpa o console
-                        System.out.println("Você procurou pela sala e encontrou uma espada!");
-                        System.out.println("Você equipou a espada.");
-                    } else {
-                        clearConsole(); // Limpa o console
-                        System.out.println("Você voltou para a sala anterior.");
-                    }
-                    break;
-                case 3:
-                    clearConsole(); // Limpa o console
-                    System.out.println("Você seguiu pela saída à esquerda. Há uma sala cheia de inimigos à sua frente!");               
-                    // Geração aleatória do monstro
-                    Monstro monstro = gerarMonstroAleatorio();
-                    // Loop da Batalha
-                    loopBatalha(personagem, monstro, scanner);
-                    break;
-                case 4:
-                    clearConsole(); // Limpa o console
-                    System.out.println("Você fugiu da masmorra. Fim de jogo!");
-                    scanner.nextLine(); // Avança para a próxima linha
-                    return;
-                default:
-                    clearConsole(); // Limpa o console
-                    System.out.println("Opção inválida! Tente novamente.");
-                    break;
-            }
-        }
+        return personagem;
     }
-
-    // Funções/Métodos Auxiliares //
-
+    
     // Gerador de monstros aleatorios
     public static Monstro gerarMonstroAleatorio() {
         Random rand = new Random();
@@ -253,25 +227,6 @@ public class Game {
             main(null); // Retorna para o inicio do jogo
         } else {
             System.out.printf("Você derrotou o %s!\n", monstro.getNome());
-            System.out.println("");
-            System.out.println("Há uma passagem secreta na sala.");
-            System.out.println("O que deseja fazer?");
-            System.out.println("");
-            System.out.println("1. Seguir pela passagem secreta");
-            System.out.println("2. Voltar para a sala anterior");
-
-            System.out.printf("\n>"); // Indica onde o usuario irá digitar
-            int escolha4 = scanner.nextInt();
-            scanner.nextLine(); // Avança para a próxima linha
-
-            if (escolha4 == 1) {
-                System.out.println("Você seguiu pela passagem secreta e encontrou uma sala com um tesouro brilhante!");
-                System.out.println("Você venceu o jogo! Parabéns!");
-                scanner.nextLine(); // Avança para a próxima linha
-                main(null); // Retorna para o inicio do jogo
-            } else {
-                System.out.println("Você voltou para a sala anterior.");
-            }
         }
     }
     // Função para iniciar o loop da batalha

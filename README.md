@@ -23,12 +23,6 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 
 > Nota: Estou atualizando o README.md e movendo as informações mais detalhadas para a [Wiki](https://github.com/EcthorSilva/souls.txt/wiki). Dessa forma, apenas as últimas atualizações em que estou trabalhando serão mantidas aqui para facilitar a leitura. 
 
-- Criei uma função para saber se o personagem ainda esta vivo; 
-- No momento fiz uma função para criar o personagem, assim posso usar o mesmo personagem em varias funções diferentes;
-- Estou alterando completamente a historia do jogo, acho que já é a terceira vez, e separando cada parte em Atos;
-- Cada um dos Atos será composto por algumas funções para que eu possa reaproveitalas em outros momentos do jogo e conseguir definir uma boa narrativa;
-- Fiz pequenas alterações no menu principal e alterei algumas outras funções para funcionar melhor nesta nova estrutura.
-
 - Adicionei uma vareavel arma para cada uma das classes, assim posso referenciar a arma de cada um dos personagens ao longo da narrativa;
 - Separei a historia do ATO I em três funções, assim consigo transitar pela historia de forma eficiente;
 - Durante toda a produção deste jogo eu recebia um alerta referente ao primeiro Scanner que dizia "_Resource leak: 'scanner' is never closed Java(536871799)_", o proprio VS Code orienta a usar um `try-with-resources`, mas não acho uma saida elegante, com um pouco de pesquisa consegui encontrar um methodo chamado `scanner.close();`, agora não temos mais vazamento de recursos.

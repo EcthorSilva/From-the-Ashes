@@ -1,13 +1,15 @@
 public abstract class Personagem {
-    protected String nome;
-    protected int vida;
-    protected int forca;
-    protected int defesa;
-    protected int destreza;
-    protected boolean defendendo;
+    public String nome;
+    public String arma;
+    public int vida;
+    public int forca;
+    public int defesa;
+    public int destreza;
+    public boolean defendendo;
 
-    public Personagem(String nome, int vida, int forca, int defesa, int destreza) {
+    public Personagem(String nome, String arma, int vida, int forca, int defesa, int destreza) {
         this.nome = nome;
+        this.arma = arma;
         this.vida = vida;
         this.forca = forca;
         this.defesa = defesa;
@@ -18,6 +20,10 @@ public abstract class Personagem {
     // Nome
     public String getNome() {
         return nome;
+    }
+    // Arma
+    public String getArma() {
+        return arma;
     }
     // Vida
     public int getVida() {

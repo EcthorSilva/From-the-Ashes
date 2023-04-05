@@ -8,23 +8,15 @@ public class Game {
 
         // Boas vindas
         clearConsole(); // Limpa o console
-        System.out.println("Bem-vindo ao Souls.txt");
-        System.out.println(" ");
-        System.out.print("Pressione Enter para iniciar o jogo...");
+        System.out.printf("Bem-vindo ao Souls.txt\n");
+        System.out.printf("\nPressione Enter para iniciar o jogo...");
         scanner.nextLine(); // Avança para a próxima linha
-        System.out.println(" ");
         
         // Menu Principal
         while (!sair) {
 
             clearConsole(); // Limpa o console
-            System.out.println("Escolha uma das opções abaixo: ");
-            System.out.println(" ");
-            System.out.println("1. Introdução");
-            System.out.println("2. Jogar");
-            System.out.println("3. Créditos");
-            System.out.println("4. Sair");
-
+            System.out.printf("Escolha uma das opções abaixo: \n\n1. Introdução\n2. Jogar\n3. Créditos\n4. Sair\n");
             System.out.printf("\n>"); // Indica onde o usuario irá digitar
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Avança para a próxima linha
@@ -53,7 +45,7 @@ public class Game {
                     System.out.println("Desenvolvido por: Ecthor Silva");
                     delay(1500); // Adiciona atraso 
                     System.out.println(" ");
-                    System.out.print("Pressione Enter para continuar...");
+                    System.out.printf("Pressione Enter para continuar...");
                     scanner.nextLine(); // Avança para a próxima linha
                     System.out.println(" ");
                     break;
@@ -72,6 +64,7 @@ public class Game {
                     System.out.println(" ");
             }
         }
+        scanner.close();
     }
     // Iniciando o jogo
     public static void jogar(){
@@ -91,15 +84,20 @@ public class Game {
         // Criar personagem
         Personagem personagem = criarPersonagem(scanner);
 
-        System.out.println("");
         delay(1500);
-        System.out.printf("-- ATO I --\n");
-        System.out.println("");
+        System.out.printf("\n\n-- ATO I --\n\n");
         delay(1500);
-        // teste
+        
+        // Ato I - Parte 1
         visitarTaverna(personagem, scanner);
 
-        explorarFloresta(personagem, scanner);
+        System.out.printf("\n-- Fim do ATO I --\n");
+        System.out.printf("\nPressione Enter para continuar...");
+        scanner.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+
+        // explorarFloresta(personagem, scanner);
+        // oPortal(personagem, scanner);
     }
 
     // ATO I - Parte 1
@@ -114,49 +112,95 @@ public class Game {
         int escolha = scanner.nextInt();
         scanner.nextLine(); // Avança para a próxima linha
         
-        if (escolha == 1) {
-            System.out.printf("\nVocê aceita a missão e se prepara para partir no dia seguinte.");
-            System.out.println("1");
-            scanner.nextLine(); // Avança para a próxima linha
-            clearConsole();
-            System.out.println("2");
-        } else if (escolha == 2) {
-            clearConsole();
-            System.out.println("Você recusa a missão e decide procurar outra oportunidade.");
-            scanner.nextLine(); // Avança para a próxima linha
-            explorarFloresta(personagem, scanner);
-        } else {
-            System.out.println("Escolha inválida!");
-            visitarTaverna(personagem, scanner);
-            scanner.nextLine(); // Avança para a próxima linha
+        switch (escolha) {
+            case 1:
+            clearConsole(); // Limpa o console
+                // Missão
+                System.out.printf("\nAo sair da taverna e voltar para a estrada, seguindo o caminho que o homem misterioso indicou. \nVocê começa a notar uma neblina escura se aproximando, o que torna difícil ver o que está a sua frente.\n");
+                System.out.printf("\nDe repente, um som terrível ecoa no ar e você percebe que demônios estão se aproximando. Eles vêm de todos os lados, emergindo da névoa negra e avançando em sua direção.\n");
+                System.out.printf("\nVocê se vira e corre em direção à floresta, buscando refúgio, mas um dos demônios te persegue sem piedade. Não há escapatória, então você decide encarar a criatura.\nCom o seu %s em mãos, você se posiciona proximo a uma clareira aberta. Suas mãos tremem e seu coração bate forte no peito, \nenquanto o monstro se aproxima com passos pesados, rosnando com uma fúria impiedosa.\n\n", personagem.getArma());
+
+                // Geração aleatória do monstro
+                Monstro monstro = gerarMonstroAleatorio();
+                // Loop da Batalha
+                loopBatalha(personagem, monstro, scanner);
+
+                // criar um sistema de itens de cura para prosseguir com essa historia na segunda parte
+                
+                System.out.printf("\nPressione Enter para continuar...");
+                scanner.nextLine(); // Avança para a próxima linha
+                clearConsole(); // Limpa o console
+                oPortal(personagem, scanner);
+                break;
+            case 2:
+            clearConsole(); // Limpa o console
+                // Missão
+                System.out.printf("Ao recusar a missão, o homem misterioso se levanta da mesa com um olhar furioso e começa a murmurar palavras ofensivas e insultos em sua direção, \nfazendo com que a tensão aumente no ambiente. Você se prepara para uma possível luta segurando o seu %s.\n", personagem.getArma());
+                System.out.printf("\nNo entanto, antes que o pior aconteça, o dono da taverna bruscamente interrompe a discussão vocês. \nAo se aproximar da mesa o dono da taverna diz ao homem misterioso que não é permitido causar problemas neste estabelecimento.\n");
+                System.out.printf("\nO homem misterioso solta um grunhido de insatisfação e se senta novamente. A fim de evitar uma nova briga você vira as costas e segue seu caminha em direção a estrada.\n");
+
+
+                System.out.printf("\nPressione Enter para continuar...");
+                scanner.nextLine(); // Avança para a próxima linha
+                clearConsole(); // Limpa o console
+                explorarFloresta(personagem, scanner);
+                break;
+            default:
+                System.out.println("Escolha inválida!");
+                visitarTaverna(personagem, scanner);
+                scanner.nextLine(); // Avança para a próxima linha
+                break;
         }
     }
+    // ATO I - Parte 2
     public static void explorarFloresta(Personagem personagem, Scanner scanner) {
-        System.out.println("Você caminha pela floresta e encontra uma caverna escura.");
-        System.out.println("Você entra na caverna e encontra um tesouro antigo!");
-        System.out.println("Você decide levar o tesouro e voltar para a cidade.");
-        clearConsole(); // Limpa o console
-        System.out.println("Você seguiu pela saída à esquerda. Há uma sala cheia de inimigos à sua frente!");               
+        System.out.printf("Enquanto caminhava pela estrada, você ouviu um grito de socorro vindo da floresta próxima e decidiu seguir a voz para investigar. \nO som fica mais alto à medida que você se aproxima. Ao chegar no local você se depara com um soldado que esta lutando contra um demônio.\n");
+        System.out.printf("\nO demônio é uma criatura horrenda, com garras afiadas e olhos ardentes. Sem hesitar, você puxa o seu %s e corre para o combate. \n\n", personagem.getArma());
+        
         // Geração aleatória do monstro
         Monstro monstro = gerarMonstroAleatorio();
         // Loop da Batalha
         loopBatalha(personagem, monstro, scanner);
-        System.out.println("Fim do primeiro ato!");
+
+        clearConsole(); // Limpa o console
+        System.out.printf("Com o inimigo morto, você se aproxima do soldado ferido e percebe que ele está à beira da morte. \nEle estende a mão e entrega a você um pequeno frasco contendo uma poção de cura. \nVocê tenta dar a poção, mas é tarde demais. O soldado morre em seus braços.\n");
+        System.out.printf("\nVocê se levanta e segue com a sua jornada.\n");
+        // criar um sistema de itens de cura para prosseguir com essa historia na segunda parte
+        
+        System.out.printf("\nPressione Enter para continuar...");
         scanner.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+        oPortal(personagem, scanner);
     }
+    // ATO I - Parte 3
+    public static void oPortal(Personagem personagem, Scanner scanner) {
+        System.out.printf("Enquanto caminha você avista uma luz intensa. A luminosidade é tão forte que transforma a noite em dia, deixando você curioso sobre o que pode estar acontecendo. \nDecidido a desvendar o mistério, você avança em direção a luz.\n");
+        System.out.printf("\nA medida que você avança, percebe que a luz parece vir de uma clareira à frente. \nQuando chega mais perto, vê que há uma espécie de portal brilhante no centro da clareira, que parece estar se expandindo e pulsando. \nO vento sopra forte e uma energia estranha parece envolver tudo ao seu redor.\n");
+        System.out.printf("\nCurioso, você se aproxima do portal e sente uma sensação de formigamento em todo o corpo. \nAntes que você possa decidir o que fazer, uma figura encapuzada surge do outro lado do portal e começa a falar com você em um idioma desconhecido.\n");
+
+        System.out.printf("\nPressione Enter para continuar...");
+        scanner.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+
+        if(personagem.getNome().equals("Mago")){
+            System.out.printf("Você se aproxima do portal com cautela, observando atentamente os símbolos e marcas inscritos em torno dele \ne imediatamente reconhece que esses murmuros se tratam de uma língua antiga e esquecida, usada há milhares de anos atrás.\n");
+            System.out.printf("\nSua curiosidade e desejo por conhecimento o impulsionam a se aproximar ainda mais. Você tenta lançar um feitiço, \nmas ao terminar de erguer a mão em direção do portal ele desaparece abruptamente, deixando para trás apenas uma chave misteriosa, que brilha suavemente na palma de sua mão.\n");
+        }else{
+            System.out.printf("\nEnquanto você tenta se aproximar ainda mais do portal, uma onda de energia poderosa o empurra para trás, fazendo com que caia no chão, sentindo-se desnorteado. \nApós se recuperar, percebe que o portal desapareceu completamente, deixando para trás apenas uma chave misteriosa, que brilha suavemente na palma de sua mão, \ncomo um lembrete da estranha experiência que teve.\n");
+        }
+        System.out.printf("\nPressione Enter para continuar...");
+        scanner.nextLine(); // Avança para a próxima linha
+        clearConsole(); // Limpa o console
+    }
+    // ATO II - Parte 1
 
     // Funções/Métodos Auxiliares //
     
     // Seleção da Classe do personagem
     public static Personagem criarPersonagem(Scanner scanner) {
-        System.out.printf("\nAntes de iniciar você precisará selecionar cuidadosamente sua classe. \nSeu treinamento e habilidades em batalha serão essenciais para superar os desafios que encontrará em sua jornada.\n");
-        System.out.println("");
+        System.out.printf("\nAntes de iniciar você precisará selecionar cuidadosamente sua classe. \nSeu treinamento e habilidades em batalha serão essenciais para superar os desafios que encontrará em sua jornada.\n\n");
         delay(1500); // Adiciona atraso 
-        System.out.println("Escolha sua classe: ");
-        System.out.println("");
-        System.out.println("1. Guerreiro");
-        System.out.println("2. Mago");
-        System.out.println("3. Arqueiro");
+        System.out.printf("Escolha sua classe: \n\n1. Guerreiro \n2. Mago \n3. Arqueiro");
     
         System.out.printf("\n>"); // Indica onde o usuario irá digitar
         int classeEscolhida = scanner.nextInt();
@@ -166,13 +210,13 @@ public class Game {
         Personagem personagem = null;
         switch (classeEscolhida) { // Selecionar a classe do personagem
             case 1:
-                personagem = new Guerreiro("guerreiro", 120, 25, 35, 10); // nome, vida, forca, defesa e destreza
+                personagem = new Guerreiro("Guerreiro", "machado", 200, 30, 40, 10); // nome, vida, forca, defesa e destreza
                 break;
             case 2:
-                personagem = new Mago("Mago", 65, 30, 30, 15); // nome, vida, forca, defesa e destreza
+                personagem = new Mago("Mago", "cajado", 150, 35, 45, 20); // nome, vida, forca, defesa e destreza
                 break;
             case 3:
-                personagem = new Arqueiro("Arqueiro", 80, 20, 20, 25); // nome, vida, forca, defesa e destreza
+                personagem = new Arqueiro("Arqueiro", "arco", 170, 25, 15, 35); // nome, vida, forca, defesa e destreza
                 break;
             default:
                 System.out.println("Opção inválida, saindo...");
@@ -210,23 +254,20 @@ public class Game {
     }
     // Função que exibe a vida do personagem e do monstro
     public static void cont(Personagem personagem, Monstro monstro){
-        System.out.println("");
-        System.out.printf("Você tem %d de vida.\n", personagem.vida);
-        System.out.printf("O %s tem %d de vida.\n", monstro.getNome(), monstro.getVida());
-        System.out.println("");
+        System.out.printf("\nVocê tem %d de vida.\n", personagem.vida);
+        System.out.printf("O %s tem %d de vida.\n\n", monstro.getNome(), monstro.getVida());
     }
     // Função para verificar se o personagem foi derrotado
     public static void VerificarPersonagem(Personagem personagem, Monstro monstro, Scanner scanner){
         // Verifica se o personagem foi derrotado
         if (personagem.getVida() <= 0) {
             // GAME OVER - PERDEU A BATALHA
-            System.out.printf("GAME OVER! Você foi derrotado pelo %s!\n", monstro.getNome());
-            System.out.println(" ");
+            System.out.printf("GAME OVER! Você foi derrotado pelo %s!\n\n", monstro.getNome());
             System.out.println("Pressione Enter para voltar ao Menu Principal...");
             scanner.nextLine(); // Avança para a próxima linha
             main(null); // Retorna para o inicio do jogo
         } else {
-            System.out.printf("Você derrotou o %s!\n", monstro.getNome());
+            System.out.printf("Você derrotou o %s!\n\n", monstro.getNome());
         }
     }
     // Função para iniciar o loop da batalha
@@ -240,11 +281,7 @@ public class Game {
 
         // Loop da batalha
         while (personagem.getVida() > 0 && monstro.getVida() > 0) {
-            System.out.println("Escolha sua ação:");
-            System.out.println("1. Atacar");
-            System.out.println("2. Defender");
-            System.out.println("3. Fugir");
-
+            System.out.printf("Escolha sua ação: \n\n1. Atacar \n2. Defender \n3. Fugir");
             System.out.printf("\n>"); // Indica onde o usuario irá digitar
             int acao = scanner.nextInt();
             scanner.nextLine(); // Avança para a próxima linha
@@ -270,19 +307,16 @@ public class Game {
                     // TENTAR FUGIR DA BATALHA
                     double chanceDeFuga = personagem.getDestreza() * 0.05;
                     if (Math.random() <= chanceDeFuga) {
-                        System.out.println("Você conseguiu fugir da batalha!");
-                        System.out.println("");
+                        System.out.printf("Você conseguiu fugir da batalha!\n\n");
                         return;
                     } else {
-                        System.out.println("Você não conseguiu fugir!");
-                        System.out.println("");
+                        System.out.printf("Você não conseguiu fugir!\n\n");
                     }
                     break;
                 default:
                     // AI CÊ TA FORÇANDO A AMIZADE, NÉ AMIGO?
                     clearConsole(); // Limpa o console
-                    System.out.println("Opção inválida! Tente novamente.");
-                    System.out.println("");
+                    System.out.printf("Opção inválida! Tente novamente.\n\n");
                     break;
             }
 

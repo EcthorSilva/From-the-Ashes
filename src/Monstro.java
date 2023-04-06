@@ -38,7 +38,6 @@ public class Monstro {
         int min = getAtaque() / 2;
         int max = getAtaque() + getDefesa();
         int dano = rand.nextInt(max - min + 1) + min;
-        // System.out.println(getNome() + " atacou com sua espada e causou " + dano + " de dano!");
         return dano;
     }
 }

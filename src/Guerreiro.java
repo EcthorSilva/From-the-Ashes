@@ -11,7 +11,7 @@ public class Guerreiro extends Personagem {
         int min = getForca() / 2;
         int max = getForca() + getDefesa();
         int dano = rand.nextInt(max - min + 1) + min;
-        // System.out.println(getNome() + " atacou com sua espada e causou " + dano + " de dano!");
+        System.out.printf("Você atacou com o seu %s e causou %d de dano! \n", getArma(), dano);
         return dano;
     }
 

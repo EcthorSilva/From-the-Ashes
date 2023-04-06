@@ -85,7 +85,7 @@ public class Game {
         Personagem personagem = criarPersonagem(scanner);
 
         delay(1500);
-        System.out.printf("\n\n-- ATO I --\n\n");
+        System.out.printf("\n-- ATO I --\n\n");
         delay(1500);
         
         // Ato I - Parte 1
@@ -125,7 +125,7 @@ public class Game {
                 // Loop da Batalha
                 loopBatalha(personagem, monstro, scanner);
 
-                // criar um sistema de itens de cura para prosseguir com essa historia na segunda parte
+                /* criar um sistema de itens de cura para prosseguir com essa historia na segunda parte */ 
                 
                 System.out.printf("\nPressione Enter para continuar...");
                 scanner.nextLine(); // Avança para a próxima linha

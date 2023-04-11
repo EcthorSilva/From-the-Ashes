@@ -95,9 +95,6 @@ public class Game {
         System.out.printf("\nPressione Enter para continuar...");
         scanner.nextLine(); // Avança para a próxima linha
         clearConsole(); // Limpa o console
-
-        // explorarFloresta(personagem, scanner);
-        // oPortal(personagem, scanner);
     }
 
     // ATO I - Parte 1

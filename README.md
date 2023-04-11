@@ -1,4 +1,4 @@
-# souls.txt  
+# From the Ashes 
 
 ###### Um jogo de ficção interativa em texto desenvolvido em Java.
 
@@ -6,7 +6,7 @@ O objetivo do projeto é produzir um RPG Textual para a disciplina PROJETO INTEG
 
 ## Descrição
 
-Em Souls.txt, os personagens possuem diversos atributos caracterizantes, como vida, força, defesa e destreza, que definem o que eles podem fazer na aventura e de que forma. Eles interagem com o cenário na forma de diálogo, seguindo padrões de fala predefinidos, ou na forma de combate, onde a cada turno, os personagens combatentes escolhem uma forma de atacar, defender ou fugir, e causam a diminuição dos pontos de vida do adversário dependendo dos já mencionados atributos.
+Em From the Ashes, os personagens possuem diversos atributos caracterizantes, como vida, força, defesa e destreza, que definem o que eles podem fazer na aventura e de que forma. Eles interagem com o cenário na forma de diálogo, seguindo padrões de fala predefinidos, ou na forma de combate, onde a cada turno, os personagens combatentes escolhem uma forma de atacar, defender ou fugir, e causam a diminuição dos pontos de vida do adversário dependendo dos já mencionados atributos.
 
 Na versão atual, o jogo é uma aventura em texto ao estilo do clássico Dunnet.
 

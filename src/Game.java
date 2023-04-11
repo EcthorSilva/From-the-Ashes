@@ -8,7 +8,7 @@ public class Game {
 
         // Boas vindas
         clearConsole(); // Limpa o console
-        System.out.printf("Bem-vindo ao Souls.txt\n");
+        System.out.printf("Bem-vindo ao From the Ashes\n");
         System.out.printf("\nPressione Enter para iniciar o jogo...");
         scanner.nextLine(); // Avança para a próxima linha
         

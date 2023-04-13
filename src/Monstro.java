@@ -1,10 +1,10 @@
 import java.util.Random;
 
 public class Monstro {
-    public String nome;
-    public int vida;
-    public int ataque;
-    public int defesa;
+    private String nome;
+    private int vida;
+    private int ataque;
+    private int defesa;
 
     public Monstro(String nome, int vida, int ataque, int defesa) {
         this.nome = nome;

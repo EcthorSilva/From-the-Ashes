@@ -207,13 +207,13 @@ public class Game {
         Personagem personagem = null;
         switch (classeEscolhida) { // Selecionar a classe do personagem
             case 1:
-                personagem = new Guerreiro("Guerreiro", "machado", 200, 30, 40, 10); // nome, vida, forca, defesa e destreza
+                personagem = new Guerreiro("Guerreiro", "machado", 200, 30, 40, 10); // nome, arma, vida, forca, defesa e destreza
                 break;
             case 2:
-                personagem = new Mago("Mago", "cajado", 150, 35, 45, 20); // nome, vida, forca, defesa e destreza
+                personagem = new Mago("Mago", "cajado", 150, 35, 45, 20); // nome, arma, vida, forca, defesa e destreza
                 break;
             case 3:
-                personagem = new Arqueiro("Arqueiro", "arco", 170, 25, 15, 35); // nome, vida, forca, defesa e destreza
+                personagem = new Arqueiro("Arqueiro", "arco", 170, 25, 15, 35); // nome, arma, vida, forca, defesa e destreza
                 break;
             default:
                 System.out.println("Opção inválida, saindo...");
@@ -251,7 +251,7 @@ public class Game {
     }
     // Função que exibe a vida do personagem e do monstro
     public static void cont(Personagem personagem, Monstro monstro){
-        System.out.printf("\nVocê tem %d de vida.\n", personagem.vida);
+        System.out.printf("\nVocê tem %d de vida.\n", personagem.getVida());
         System.out.printf("O %s tem %d de vida.\n\n", monstro.getNome(), monstro.getVida());
     }
     // Função para verificar se o personagem foi derrotado
@@ -288,7 +288,6 @@ public class Game {
                     clearConsole(); // Limpa o console
                     // ATAQUE
                     int danoCausado = personagem.atacar();
-                    System.out.printf("Você causou %d de dano!\n", danoCausado);
                     monstro.tomarDano(danoCausado);
                     break;
                 case 2:
@@ -326,7 +325,6 @@ public class Game {
                     if (defendendo != false) {
                         // Caso seja diferente de falso ele mostra o valor do dano recebido dividido por dois e atribui o valor falso para o status defendendo.
                         System.out.printf("O %s causou %d de dano!\n", monstro.getNome(), (danoRecebido / 2));
-                        
                         defendendo = false; // Atribui o valor falso a variavel defendendo
                     } else {
                         System.out.printf("O %s causou %d de dano!\n", monstro.getNome(), danoRecebido);

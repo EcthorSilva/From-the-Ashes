@@ -23,9 +23,9 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 
 > Nota: Estou atualizando o README.md e movendo as informações mais detalhadas para a [Wiki](https://github.com/EcthorSilva/souls.txt/wiki). Dessa forma, apenas as últimas atualizações em que estou trabalhando serão mantidas aqui para facilitar a leitura. 
 
-- Alterei as variaveis das classes personagem e monstro de `public` para `private` após alguma conversa com o Prof. Fernando Almeida da aula de Algoritmos e Programação I;
-- Removi algumas linhas de codigo que estavam ali desnecessariamente e alterei alguns comentarios;
-- Removi a frase de ataque da funsão `loopBatalha()` e coloquei uma diferente na função `atacar()` na classe de cada um dos persosnagens;
+- Alterei as variáveis das classes personagem e monstro de `public` para `private` após alguma conversa com o Prof. Fernando Almeida da aula de Algoritmos e Programação I;
+- Removi algumas linhas de código que estavam ali desnecessariamente e alterei alguns comentários;
+- Removi a frase de ataque da função `loopBatalha()` e coloquei uma diferente na função `atacar()` na classe de cada um dos personagens;
 - Removi a função defender das classes dos personagens pois eu não esta utilizando.
 
 ## Contribuição

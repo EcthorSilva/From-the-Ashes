@@ -1,11 +1,11 @@
 public abstract class Personagem {
-    public String nome;
-    public String arma;
-    public int vida;
-    public int forca;
-    public int defesa;
-    public int destreza;
-    public boolean defendendo;
+    private String nome;
+    private String arma;
+    private int vida;
+    private int forca;
+    private int defesa;
+    private int destreza;
+    private boolean defendendo;
 
     public Personagem(String nome, String arma, int vida, int forca, int defesa, int destreza) {
         this.nome = nome;

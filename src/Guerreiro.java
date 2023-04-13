@@ -14,10 +14,4 @@ public class Guerreiro extends Personagem {
         System.out.printf("Você atacou com o seu %s e causou %d de dano! \n", getArma(), dano);
         return dano;
     }
-
-    @Override
-    public void defender() {
-        super.defender();
-        // System.out.println(getNome() + " também recuou com a sua espada em mãos!");
-    }
 }

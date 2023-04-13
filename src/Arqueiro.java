@@ -14,10 +14,4 @@ public class Arqueiro extends Personagem {
         System.out.printf("Você atirou uma flecha com o seu %s e causou %d de dano!\n", getArma(), dano);
         return dano;
     }
-
-    @Override
-    public void defender() {
-        super.defender();
-        // System.out.println(getNome() + " também recuou para uma posição mais defensiva!");
-    }
 }

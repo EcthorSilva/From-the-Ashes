@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class Mago extends Personagem {
-    public Mago(String nome, String arma, int vida, int forca, int defesa, int destreza) {
-        super(nome, arma, vida, forca, defesa, destreza);
+    public Mago(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
+        super(nome, arma, vida, forca, defesa, destreza, estusFlask);
     }
 
     @Override

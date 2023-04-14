@@ -6,8 +6,9 @@ public abstract class Personagem {
     private int defesa;
     private int destreza;
     private boolean defendendo;
+    private int estusFlask;
 
-    public Personagem(String nome, String arma, int vida, int forca, int defesa, int destreza) {
+    public Personagem(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
         this.nome = nome;
         this.arma = arma;
         this.vida = vida;
@@ -53,7 +54,15 @@ public abstract class Personagem {
     public void setDestreza(int destreza) {
         this.destreza = destreza;
     }
+    // Cura
+    public int getEstusFlask() {
+        return estusFlask;
+    }
+    public int setEstusFlask(int estusFlask) {
+        return this.estusFlask = estusFlask;
+    }
 
+    // Funções 
     public void defender() {
         this.defendendo = true;
     }

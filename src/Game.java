@@ -1,7 +1,9 @@
 import java.util.Scanner;
 import java.util.Random;
-
 public class Game {
+    // Variavel para verificar se o personagem esta ou não defendendo
+    static boolean defendendo = false;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean sair = false;
@@ -14,7 +16,6 @@ public class Game {
         
         // Menu Principal
         while (!sair) {
-
             clearConsole(); // Limpa o console
             System.out.printf("Escolha uma das opções abaixo: \n\n1. Introdução\n2. Jogar\n3. Créditos\n4. Sair\n");
             System.out.printf("\n>"); // Indica onde o usuario irá digitar
@@ -162,8 +163,11 @@ public class Game {
         clearConsole(); // Limpa o console
         System.out.printf("Com o inimigo morto, você se aproxima do soldado ferido e percebe que ele está à beira da morte. \nEle estende a mão e entrega a você um pequeno frasco contendo uma poção de cura. \nVocê tenta dar a poção, mas é tarde demais. O soldado morre em seus braços.\n");
         System.out.printf("\nVocê se levanta e segue com a sua jornada.\n");
+
         // criar um sistema de itens de cura para prosseguir com essa historia na segunda parte
-        
+        acharCura(personagem);
+        System.out.println("passou aqui");
+
         System.out.printf("\nPressione Enter para continuar...");
         scanner.nextLine(); // Avança para a próxima linha
         clearConsole(); // Limpa o console
@@ -183,6 +187,10 @@ public class Game {
             System.out.printf("Você se aproxima do portal com cautela, observando atentamente os símbolos e marcas inscritos em torno dele \ne imediatamente reconhece que esses murmuros se tratam de uma língua antiga e esquecida, usada há milhares de anos atrás.\n");
             System.out.printf("\nSua curiosidade e desejo por conhecimento o impulsionam a se aproximar ainda mais. Você tenta lançar um feitiço, \nmas ao terminar de erguer a mão em direção do portal ele desaparece abruptamente, deixando para trás apenas uma chave misteriosa, que brilha suavemente na palma de sua mão.\n");
         }else{
+            // Geração aleatória do monstro
+            Monstro monstro = gerarMonstroAleatorio();
+            // Loop da Batalha
+            loopBatalha(personagem, monstro, scanner);
             System.out.printf("\nEnquanto você tenta se aproximar ainda mais do portal, uma onda de energia poderosa o empurra para trás, fazendo com que caia no chão, sentindo-se desnorteado. \nApós se recuperar, percebe que o portal desapareceu completamente, deixando para trás apenas uma chave misteriosa, que brilha suavemente na palma de sua mão, \ncomo um lembrete da estranha experiência que teve.\n");
         }
         System.out.printf("\nPressione Enter para continuar...");
@@ -207,13 +215,13 @@ public class Game {
         Personagem personagem = null;
         switch (classeEscolhida) { // Selecionar a classe do personagem
             case 1:
-                personagem = new Guerreiro("Guerreiro", "machado", 200, 30, 40, 10); // nome, arma, vida, forca, defesa e destreza
+                personagem = new Guerreiro("Guerreiro", "machado", 200, 30, 40, 10, 0); // nome, arma, vida, forca, defesa, destreza e estusFlask
                 break;
             case 2:
-                personagem = new Mago("Mago", "cajado", 150, 35, 45, 20); // nome, arma, vida, forca, defesa e destreza
+                personagem = new Mago("Mago", "cajado", 150, 35, 45, 20, 0); // nome, arma, vida, forca, defesa, destreza e estusFlask
                 break;
             case 3:
-                personagem = new Arqueiro("Arqueiro", "arco", 170, 25, 15, 35); // nome, arma, vida, forca, defesa e destreza
+                personagem = new Arqueiro("Arqueiro", "arco", 170, 25, 15, 35, 0); // nome, arma, vida, forca, defesa, destreza e estusFlask
                 break;
             default:
                 System.out.println("Opção inválida, saindo...");
@@ -253,6 +261,8 @@ public class Game {
     public static void cont(Personagem personagem, Monstro monstro){
         System.out.printf("\nVocê tem %d de vida.\n", personagem.getVida());
         System.out.printf("O %s tem %d de vida.\n\n", monstro.getNome(), monstro.getVida());
+
+        System.out.printf("\nVocê tem %d de estus flask.\n", personagem.getEstusFlask());
     }
     // Função para verificar se o personagem foi derrotado
     public static void VerificarPersonagem(Personagem personagem, Monstro monstro, Scanner scanner){
@@ -272,9 +282,6 @@ public class Game {
         System.out.printf("Um %s apareceu!\n", monstro.getNome());
 
         cont(personagem, monstro); // Exibe a vida do personagem e do monstro
-
-        // Variavel para saber se o personagem esta ou não defendendo
-        boolean defendendo = false;
 
         // Loop da batalha
         while (personagem.getVida() > 0 && monstro.getVida() > 0) {
@@ -337,5 +344,14 @@ public class Game {
             cont(personagem, monstro); // Exibe a vida do personagem e do monstro
         }
         VerificarPersonagem(personagem, monstro, scanner); // Verificar se o personagem foi derrotado
+    }
+    public static void acharCura(Personagem personagem){
+        if (personagem.getEstusFlask() < 3){
+            int estusFlask = personagem.getEstusFlask();
+            personagem.setEstusFlask(estusFlask + 1);
+            System.out.printf("Você encontrou %d Estus e guardou em seu inventario.", personagem.getEstusFlask());         
+        }else{
+            System.out.printf("Você tem %d Estus em seu inventario.", personagem.getEstusFlask());
+        }
     }
 }

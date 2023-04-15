@@ -14,4 +14,16 @@ public class Guerreiro extends Personagem {
         System.out.printf("Você atacou com o seu %s e causou %d de dano! \n", getArma(), dano);
         return dano;
     }
+
+    @Override
+    public int fugir() {
+        double chanceDeFuga = getDestreza() * 0.05;
+        if (Math.random() <= chanceDeFuga) {
+            System.out.printf("Você conseguiu fugir da batalha!\n\n");
+            return 1;
+        } else {
+            System.out.printf("Você não conseguiu fugir!\n\n");
+            return 0;
+        }
+    }
 }

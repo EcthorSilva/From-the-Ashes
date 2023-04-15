@@ -21,18 +21,13 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 
 ## Updates
 
-> Nota: Estou atualizando o README.md e movendo as informações mais detalhadas para a [Wiki](https://github.com/EcthorSilva/souls.txt/wiki). Dessa forma, apenas as últimas atualizações em que estou trabalhando serão mantidas aqui para facilitar a leitura. 
-
-- Alterei as variáveis das classes personagem e monstro de `public` para `private` após alguma conversa com o Prof. Fernando Almeida da aula de Algoritmos e Programação I;
-- Removi algumas linhas de código que estavam ali desnecessariamente e alterei alguns comentários;
-- Removi a frase de ataque da função `loopBatalha()` e coloquei uma diferente na função `atacar()` na classe de cada um dos personagens;
-- Removi a função defender das classes dos personagens pois eu não esta utilizando.
+> Nota: Estou atualizando o README.md e movendo as informações mais detalhadas para a [Wiki](https://github.com/EcthorSilva/souls.txt/wiki). Dessa forma, apenas as últimas atualizações em que estou trabalhando serão mantidas aqui para facilitar a leitura.  
 
 - Tirei o calculo da chance de cura e transformei ele em uma função chamada `fugir();` presente nas classes dos personagens para funcionar da mesma forma que a função `atacar();`;
 - Fiz um pequeno balanceamento nos status dos personagens e monstros;
 - Criei uma função `acharCura();` e outra `usarCura();`, e adicionei elas a classe Personagem;
 - Criei uma classe Clérigo como referencia ao Patches do Dark Souls;
-- Movi todos as Funções Auxiliares para a classe Metodos e as Funções da Historia para a classe Atos seguindo a dica do professor Fernando de *Algoritmos e Programação I*.
+- Movi todos as Funções Auxiliares para a classe Métodos e as Funções da Historia para a classe Atos seguindo a dica do professor Fernando de *Algoritmos e Programação I*.
 
 
 ## Contribuição

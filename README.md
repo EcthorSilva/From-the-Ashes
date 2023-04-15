@@ -28,6 +28,13 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 - Removi a frase de ataque da função `loopBatalha()` e coloquei uma diferente na função `atacar()` na classe de cada um dos personagens;
 - Removi a função defender das classes dos personagens pois eu não esta utilizando.
 
+- Tirei o calculo da chance de cura e transformei ele em uma função chamada `fugir();` presente nas classes dos personagens para funcionar da mesma forma que a função `atacar();`;
+- Fiz um pequeno balanceamento nos status dos personagens e monstros;
+- Criei uma função `acharCura();` e outra `usarCura();`, e adicionei elas a classe Personagem;
+- Criei uma classe Clérigo como referencia ao Patches do Dark Souls;
+- Movi todos as Funções Auxiliares para a classe Metodos e as Funções da Historia para a classe Atos seguindo a dica do professor Fernando de *Algoritmos e Programação I*.
+
+
 ## Contribuição
 Este projeto foi desenvolvido para fins educacionais, portanto, não aceitamos contribuições para o mesmo. No entanto, sugestões e feedbacks são bem-vindos.
 

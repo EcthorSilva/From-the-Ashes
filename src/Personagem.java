@@ -62,10 +62,13 @@ public abstract class Personagem {
         return this.estusFlask = estusFlask;
     }
 
-    // Funções 
+    /* Funções */
+
+    // Defender
     public void defender() {
         this.defendendo = true;
     }
+    // Tomar Dano
     public void tomarDano(int dano) {
         if (defendendo) {
             dano /= 2;
@@ -73,5 +76,48 @@ public abstract class Personagem {
         }
         this.vida -= dano;
     }
+    // Atacar
     public abstract int atacar();
+    // Fugir
+    public abstract int fugir();
+    // Encontrar cura
+    public static void acharCura(Personagem personagem){
+        if (personagem.getEstusFlask() < 3){
+            int estusFlask = personagem.getEstusFlask();
+            personagem.setEstusFlask(estusFlask + 1);
+            System.out.printf("Você encontrou %d Estus e guardou em seu inventario.\n", personagem.getEstusFlask());         
+        }else{
+            System.out.printf("Você tem %d Estus em seu inventario.\n", personagem.getEstusFlask());
+        }
+    }
+    // Usar cura
+    public static void usarCura(Personagem personagem) {
+        int estusFlask = personagem.getEstusFlask();
+        int vidaMaxima = personagem.getVida();
+
+        if(estusFlask > 0){
+            // Define a vida maxima de cada uma das classes
+            if(personagem.getNome().equals("Guerreiro")){
+                vidaMaxima = 257;
+            }else if(personagem.getNome().equals("Mago")){
+                vidaMaxima = 190;
+            }else if(personagem.getNome().equals("Arqueiro")){
+                vidaMaxima = 200;
+            }
+            
+            int vidaAtual = personagem.getVida();
+            int cura = (int) (vidaMaxima * 0.4); // cura 40% de vida do personagem
+
+            if (vidaAtual + cura > vidaMaxima) {
+                personagem.setVida(vidaMaxima);
+            } else {
+                personagem.setVida(vidaAtual + cura);
+            }
+            personagem.setEstusFlask(estusFlask - 1);
+            System.out.printf("Você usou um item de Estus e esta com %d de vida\n", personagem.getVida());
+
+        }else{
+            System.out.println("Inventário vazio.");
+        }
+    }
 }

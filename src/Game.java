@@ -52,9 +52,8 @@ public class Game {
                 case 4:
                     sair = true;
                     Metodos.clearConsole(); // Limpa o console
-                    System.out.println("Saindo do jogo...");
-                    scanner.nextLine(); // Avança para a próxima linha
-                    System.out.println(" ");
+                    System.out.println("Saindo do jogo...\n");
+                    Metodos.delay(1500); // Adiciona atraso 
                     break;
                 default:
                     Metodos.clearConsole(); // Limpa o console
@@ -78,20 +77,24 @@ public class Game {
         Metodos.delay(1000); // Adiciona atraso
         System.out.println(" ");
         System.out.printf("Rumores surgiram de que um grande demônio estava se aproximando, liderando um exército de monstros e demônios das profundezas do submundo. \nO demônio era conhecido como o Rei Demônio e muitos acreditavam que sua chegada marcaria o fim do mundo.\n");
-        Metodos.delay(1500); // Adiciona atraso
+        Metodos.delay(1000); // Adiciona atraso
         
         // Criar personagem
         Personagem personagem = Metodos.criarPersonagem(scanner);
 
-        Metodos.delay(1500);
+        Metodos.delay(1000);
         System.out.printf("\n-- ATO I --\n\n");
-        Metodos.delay(1500);
+        Metodos.delay(1000);
         
         /* Ato I */ 
         Atos.visitarTaverna(personagem, scanner);
 
+        Metodos.delay(1000);
         System.out.printf("\n-- Fim do ATO I --\n");
+        Metodos.delay(1000);
+        
         System.out.printf("\nPressione Enter para continuar...");
+        
         scanner.nextLine(); // Avança para a próxima linha
         Metodos.clearConsole(); // Limpa o console
     }

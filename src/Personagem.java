@@ -5,8 +5,8 @@ public abstract class Personagem {
     private int forca;
     private int defesa;
     private int destreza;
-    private boolean defendendo;
     private int estusFlask;
+    private boolean defendendo;
 
     public Personagem(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
         this.nome = nome;
@@ -117,7 +117,7 @@ public abstract class Personagem {
             System.out.printf("Você usou um item de Estus e esta com %d de vida\n", personagem.getVida());
 
         }else{
-            System.out.println("Inventário vazio.");
+            System.out.printf("Inventário vazio.\n");
         }
     }
 }

@@ -23,12 +23,7 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 
 > Nota: Estou atualizando o README.md e movendo as informações mais detalhadas para a [Wiki](https://github.com/EcthorSilva/souls.txt/wiki). Dessa forma, apenas as últimas atualizações em que estou trabalhando serão mantidas aqui para facilitar a leitura.  
 
-- Tirei o calculo da chance de cura e transformei ele em uma função chamada `fugir();` presente nas classes dos personagens para funcionar da mesma forma que a função `atacar();`;
-- Fiz um pequeno balanceamento nos status dos personagens e monstros;
-- Criei uma função `acharCura();` e outra `usarCura();`, e adicionei elas a classe Personagem;
-- Criei uma classe Clérigo como referencia ao Patches do Dark Souls;
-- Movi todos as Funções Auxiliares para a classe Métodos e as Funções da Historia para a classe Atos seguindo a dica do professor Fernando de *Algoritmos e Programação I*.
-
+- Alterei a função `atacar()` para adicionar uma chance de 15% de errar o ataque e 15% de acertar um ataque com dano critico.
 
 ## Contribuição
 Este projeto foi desenvolvido para fins educacionais, portanto, não aceitamos contribuições para o mesmo. No entanto, sugestões e feedbacks são bem-vindos.

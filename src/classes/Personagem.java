@@ -1,3 +1,5 @@
+package classes;
+
 public abstract class Personagem {
     private String nome;
     private String arma;
@@ -97,11 +99,11 @@ public abstract class Personagem {
 
         if(estusFlask > 0){
             // Define a vida maxima de cada uma das classes
-            if(personagem.getNome().equals("Guerreiro")){
+            if(personagem.getNome().equals("classes.Guerreiro")){
                 vidaMaxima = 257;
-            }else if(personagem.getNome().equals("Mago")){
+            }else if(personagem.getNome().equals("classes.Mago")){
                 vidaMaxima = 190;
-            }else if(personagem.getNome().equals("Arqueiro")){
+            }else if(personagem.getNome().equals("classes.Arqueiro")){
                 vidaMaxima = 200;
             }
             

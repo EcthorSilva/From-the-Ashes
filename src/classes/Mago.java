@@ -1,7 +1,9 @@
+package classes;
+
 import java.util.Random;
 
-public class Guerreiro extends Personagem {
-    public Guerreiro(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
+public class Mago extends Personagem {
+    public Mago(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
         super(nome, arma, vida, forca, defesa, destreza, estusFlask);
     }
 
@@ -16,17 +18,17 @@ public class Guerreiro extends Personagem {
         if(rand.nextDouble() < 0.85){ // 85% de chances de acertar e 15% de errar
             if(rand.nextDouble() < 0.15){ // Ataque critico (15% de chances de acerto critico)
                 dano = (rand.nextInt(max - min + 1) + min) * 2;
-                System.out.printf("Você atacou com o seu %s e causou %d de dano CRITICO! \n", getArma(), dano);
+                System.out.printf("Você lançou um feitiço com o seu %s e causou %d de dano CRITICO! \n", getArma(), dano);
             }else{ // Ataque normal
                 dano = rand.nextInt(max - min + 1) + min;
-                System.out.printf("Você atacou com o seu %s e causou %d de dano! \n", getArma(), dano);
+                System.out.printf("Você lançou um feitiço com o seu %s e causou %d de dano!\n", getArma(), dano);
             }
         }else{ // errou
             System.out.printf("Você errou o ataque!\n");
         }
         return dano;
     }
-
+    
     @Override
     public int fugir() {
         double chanceDeFuga = getDestreza() * 0.05;

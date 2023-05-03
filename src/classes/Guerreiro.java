@@ -1,7 +1,9 @@
+package classes;
+
 import java.util.Random;
 
-public class Clerigo extends Personagem {
-    public Clerigo(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
+public class Guerreiro extends Personagem {
+    public Guerreiro(String nome, String arma, int vida, int forca, int defesa, int destreza, int estusFlask) {
         super(nome, arma, vida, forca, defesa, destreza, estusFlask);
     }
 
@@ -13,13 +15,13 @@ public class Clerigo extends Personagem {
         int max = getForca() + getDefesa();
         int dano = 0;
 
-        if(rand.nextDouble() < 0.65){ // 65% de chances de acertar e 35% de errar
-            if(rand.nextDouble() < 0.5){ // Ataque critico (5% de chances de acerto critico)
+        if(rand.nextDouble() < 0.85){ // 85% de chances de acertar e 15% de errar
+            if(rand.nextDouble() < 0.15){ // Ataque critico (15% de chances de acerto critico)
                 dano = (rand.nextInt(max - min + 1) + min) * 2;
-                System.out.printf("Você usou um milagre com o seu %s e causou %d de dano CRITICO! \n", getArma(), dano);
+                System.out.printf("Você atacou com o seu %s e causou %d de dano CRITICO! \n", getArma(), dano);
             }else{ // Ataque normal
                 dano = rand.nextInt(max - min + 1) + min;
-                System.out.printf("Você usou um milagre com o seu %s e causou %d de dano! \n", getArma(), dano);
+                System.out.printf("Você atacou com o seu %s e causou %d de dano! \n", getArma(), dano);
             }
         }else{ // errou
             System.out.printf("Você errou o ataque!\n");

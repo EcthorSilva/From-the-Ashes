@@ -1,3 +1,6 @@
+import classes.Monstro;
+import classes.Personagem;
+
 import java.util.Scanner;
 
 /* Funções de historia */
@@ -86,7 +89,7 @@ public class Atos {
         scanner.nextLine(); // Avança para a próxima linha
         Metodos.clearConsole(); // Limpa o console
 
-        if(personagem.getNome().equals("Mago")){
+        if(personagem.getNome().equals("classes.Mago")){
             System.out.printf("Você se aproxima do portal com cautela, observando atentamente os símbolos e marcas inscritos em torno dele \ne imediatamente reconhece que esses murmuros se tratam de uma língua antiga e esquecida, usada há milhares de anos atrás.\n");
             System.out.printf("\nSua curiosidade e desejo por conhecimento o impulsionam a se aproximar ainda mais. Você tenta lançar um feitiço, \nmas ao terminar de erguer a mão em direção do portal ele desaparece abruptamente, deixando para trás apenas uma chave misteriosa, que brilha suavemente na palma de sua mão.\n");
         }else{

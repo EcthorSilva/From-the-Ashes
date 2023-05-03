@@ -25,6 +25,10 @@ Para utilizar o jogo, é necessário ter instalado uma IDE para a linguagem Java
 
 - Alterei a função `atacar()` para adicionar uma chance de 15% de errar o ataque e 15% de acertar um ataque com dano critico.
 
+- Criei uma nova package e movi as classes `Arqueiro`, `Clerigo`, `Guerreiro`, `Mago`, `Personagem` e `Monstro` para ela;  
+- Movi a função jogar para a classe `Metodos`;  
+- Criei uma função `Menu` para deixar a classe Main, que no caso é a `Game.java` limpa.
+
 ## Contribuição
 Este projeto foi desenvolvido para fins educacionais, portanto, não aceitamos contribuições para o mesmo. No entanto, sugestões e feedbacks são bem-vindos.
 

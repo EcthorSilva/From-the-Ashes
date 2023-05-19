@@ -87,9 +87,9 @@ public abstract class Personagem {
         if (personagem.getEstusFlask() < 3){
             int estusFlask = personagem.getEstusFlask();
             personagem.setEstusFlask(estusFlask + 1);
-            System.out.printf("Você encontrou %d Estus e guardou em seu inventario.\n", personagem.getEstusFlask());         
+            System.out.printf("Você encontrou %d poção de cura e guardou em seu inventario.\n", personagem.getEstusFlask());         
         }else{
-            System.out.printf("Você tem %d Estus em seu inventario.\n", personagem.getEstusFlask());
+            System.out.printf("Você tem %d poção de cura em seu inventario.\n", personagem.getEstusFlask());
         }
     }
     // Usar cura
@@ -116,7 +116,7 @@ public abstract class Personagem {
                 personagem.setVida(vidaAtual + cura);
             }
             personagem.setEstusFlask(estusFlask - 1);
-            System.out.printf("Você usou um item de Estus e esta com %d de vida\n", personagem.getVida());
+            System.out.printf("Você usou um item de cura e esta com %d de vida\n", personagem.getVida());
 
         }else{
             System.out.printf("Inventário vazio.\n");

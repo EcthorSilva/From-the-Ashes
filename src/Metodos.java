@@ -31,13 +31,12 @@ public class Metodos {
                 case 1:
                     clearConsole(); // Limpa o console
                     System.out.printf("-- INTRODUÇÃO --\n");
+                    delay(1000); // Adiciona atraso 
                     System.out.printf("\nEste jogo se passa em um mundo governado por deuses, onde humanos e criaturas das trevas lutam pela sobrevivência. \nUm grande demônio, conhecido como Rei Demônio, lidera um exército de monstros e demônios das profundezas do submundo, ameaçando o mundo e marcando possivelmente o seu fim. \nPara salvar a humanidade você precisará lutar contra monstros poderosos e se aprofundar cada vez mais neste universo.\n");
                     System.out.printf("\nDurante a sua aventura, você irá se deparar com diversos monstros que precisam ser derrotados para que você possa avançar na história. \nPara enfrentá-los, você terá a opção de atacar, defender ou até mesmo fugir. \nSuas escolhas durante as batalhas serão cruciais para o resultado final e para o seu progresso na jornada. \n\nPortanto, escolha sabiamente e use suas habilidades e recursos com cautela para vencer essas batalhas épicas. \nBoa sorte!\n\n");
                     delay(1500); // Adiciona atraso 
-                    System.out.println(" ");
                     System.out.print("Pressione Enter para continuar...");
                     scanner.nextLine(); // Avança para a próxima linha
-                    System.out.println(" ");
                     break;
                 case 2:
                     clearConsole(); // Limpa o console
@@ -45,25 +44,22 @@ public class Metodos {
                     break;
                 case 3:
                     clearConsole(); // Limpa o console
-                    System.out.printf("--CRÉDITOS--");
+                    System.out.printf("--CRÉDITOS--\n\n");
                     delay(1000); // Adiciona atraso 
-                    System.out.println(" ");
-                    System.out.println("Desenvolvido por: Ecthor Silva");
+                    System.out.printf("Desenvolvido por: Ecthor Silva\n\n");
                     delay(1500); // Adiciona atraso 
-                    System.out.println(" ");
                     System.out.printf("Pressione Enter para continuar...");
                     scanner.nextLine(); // Avança para a próxima linha
-                    System.out.println(" ");
                     break;
                 case 4:
                     sair = true;
                     clearConsole(); // Limpa o console
-                    System.out.println("Saindo do jogo...\n");
-                    delay(1500); // Adiciona atraso 
+                    System.out.print("Saindo do jogo...");
+                    delay(1000); // Adiciona atraso 
                     break;
                 default:
                     clearConsole(); // Limpa o console
-                    System.out.print("Opção inválida, pressione Enter para tentar novamente!");
+                    System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
                     scanner.nextLine(); // Avança para a próxima linha
                     System.out.println(" ");
             }
@@ -88,16 +84,18 @@ public class Metodos {
         // Criar personagem
         Personagem personagem = criarPersonagem(scanner);
 
-        delay(1000);
+        delay(1000); // Adiciona atraso 
         System.out.printf("\n-- ATO I --\n\n");
-        delay(1000);
+        delay(1000); // Adiciona atraso 
         
         /* Ato I */ 
         Atos.visitarTaverna(personagem, scanner);
 
-        delay(1000);
+        delay(1000); // Adiciona atraso 
         System.out.printf("\n-- Fim do ATO I --\n");
-        delay(1000);
+        delay(1000); // Adiciona atraso 
+        System.out.printf("\nObrigado por jogar esta demo\n");
+        delay(1000); // Adiciona atraso 
         
         System.out.printf("\nPressione Enter para continuar...");
         
@@ -130,8 +128,11 @@ public class Metodos {
                 personagem = new Clerigo("Clérigo", "castiçal de clérigo", 201, 27, 37, 5, 0); // nome, arma, vida, forca, defesa, destreza e estusFlask
                 break;
             default:
-                System.out.println("Opção inválida, saindo...");
-                System.exit(0);
+                clearConsole(); // Limpa o console
+                System.out.println("Opção inválida. Tente novamente...");
+                // Caso escolha uma opção inexistente o jogo retorna para a criação de personagem
+                delay(1000);
+                return criarPersonagem(scanner);
         }
         clearConsole(); // Limpa o console
         System.out.printf("Você escolheu a classe %s.\n", personagem.getNome());
@@ -139,13 +140,12 @@ public class Metodos {
             System.out.printf("\nCalma, você realmente escolheu essa classe?\nDe todas as outras vc escolheu essa? Boa sorte! kkkkkkkk\n");
         }
         delay(1500); // Adiciona atraso 
-
         return personagem;
     }
     // Gerador de monstros aleatorios
     public static Monstro gerarMonstroAleatorio() {
         Random rand = new Random();
-        String[] nomes = { "Esqueleto", "Orc", "Troll", "Goblin", "Dragão" };
+        String[] nomes = { "Demônio Elemental", "Demônio Abissal", "Demônio da Morte", "Demônio do Caos", "Demônio do Medo" };
         int vida = rand.nextInt(100) + 100; // Vida do Monstro
         int ataque = rand.nextInt(30) + 20; // Ataque do Monstro
         int defesa = rand.nextInt(30) + 20; // Defesa do Monstro
@@ -176,7 +176,8 @@ public class Metodos {
         if (personagem.getVida() <= 0) {
             // GAME OVER - PERDEU A BATALHA
             System.out.printf("GAME OVER! Você foi derrotado pelo %s!\n\n", monstro.getNome());
-            System.out.println("Pressione Enter para voltar ao Menu Principal...");
+            delay(1000); // Adiciona atraso
+            System.out.print("Pressione Enter para voltar ao Menu Principal...");
             scanner.nextLine(); // Avança para a próxima linha
             Game.main(null); // Retorna para o inicio do jogo
         } else {

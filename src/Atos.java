@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Atos {
     /* ATO I - Parte 1 */ 
-    public static void visitarTaverna(Personagem personagem, Scanner scanner) {
+    public static void visitarTaverna(Personagem personagem, Scanner input) {
         System.out.printf("Você estava caminhando pela estrada durante a noite, sentindo-se exausto e faminto. Avistou uma taverna e, mesmo hesitante, decidiu entrar para descansar um pouco. \nAo entrar, você percebe que o local estava relativamente vazio, com apenas algumas pessoas sentadas em mesas espalhadas pelo ambiente. Você se senta no balcão e pede uma bebida ao garçom.\n");
         Metodos.delay(1500); // Adiciona atraso
         System.out.printf("\nEnquanto descansa, você percebe que tem um homem misterioso sentado em uma mesa no canto da taverna. O homem parecia estar te observando com bastante interesse. \nO homem misterioso se aproxima de você e oferece uma missão arriscada, mas altamente lucrativa, ele diz precisa de alguém para recuperar um objeto valioso em uma caverna perigosa e está disposto a pagar generosamente por isso.");
@@ -18,8 +18,8 @@ public class Atos {
         System.out.println("2. Recusar a missão.");
         
         System.out.printf("\n>"); // Indica onde o usuario irá digitar
-        int escolha = scanner.nextInt();
-        scanner.nextLine(); // Avança para a próxima linha
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
         
         switch (escolha) {
             case 1:
@@ -34,14 +34,14 @@ public class Atos {
                 // Geração aleatória do monstro
                 Monstro monstro = Metodos.gerarMonstroAleatorio();
                 // Loop da Batalha
-                Metodos.loopBatalha(personagem, monstro, scanner);
+                Metodos.loopBatalha(personagem, monstro, input);
                 // Encontrou uma cura 
                 Personagem.acharCura(personagem);
                 Metodos.delay(1500); // Adiciona atraso
                 System.out.printf("\nPressione Enter para continuar...");
-                scanner.nextLine(); // Avança para a próxima linha
+                input.nextLine(); // Avança para a próxima linha
                 Metodos.clearConsole(); // Limpa o console
-                oPortal(personagem, scanner);
+                oPortal(personagem, input);
                 break;
             case 2:
                 Metodos.clearConsole(); // Limpa o console
@@ -53,19 +53,19 @@ public class Atos {
                 System.out.printf("\nO homem misterioso solta um grunhido de insatisfação e se senta novamente. A fim de evitar uma nova briga você vira as costas e segue seu caminha em direção a estrada.\n");
                 Metodos.delay(1500); // Adiciona atraso
                 System.out.printf("\nPressione Enter para continuar...");
-                scanner.nextLine(); // Avança para a próxima linha
+                input.nextLine(); // Avança para a próxima linha
                 Metodos.clearConsole(); // Limpa o console
-                explorarFloresta(personagem, scanner);
+                explorarFloresta(personagem, input);
                 break;
             default:
                 System.out.println("Escolha inválida!");
-                visitarTaverna(personagem, scanner);
-                scanner.nextLine(); // Avança para a próxima linha
+                visitarTaverna(personagem, input);
+                input.nextLine(); // Avança para a próxima linha
                 break;
         }
     }
     /* ATO I - Parte 2 */
-    public static void explorarFloresta(Personagem personagem, Scanner scanner) {
+    public static void explorarFloresta(Personagem personagem, Scanner input) {
         System.out.printf("Enquanto caminhava pela estrada, você ouviu um grito de socorro vindo da floresta próxima e decidiu seguir a voz para investigar. \nO som fica mais alto à medida que você se aproxima. Ao chegar no local você se depara com um soldado que esta lutando contra um demônio.\n");
         Metodos.delay(1000); // Adiciona atraso
         System.out.printf("\nO demônio é uma criatura horrenda, com garras afiadas e olhos ardentes. Sem hesitar, você puxa o seu %s e corre para o combate. \n\n", personagem.getArma());
@@ -73,7 +73,7 @@ public class Atos {
         // Geração aleatória do monstro
         Monstro monstro = Metodos.gerarMonstroAleatorio();
         // Loop da Batalha
-        Metodos.loopBatalha(personagem, monstro, scanner);
+        Metodos.loopBatalha(personagem, monstro, input);
 
         Metodos.clearConsole(); // Limpa o console
         System.out.printf("Com o inimigo morto, você se aproxima do soldado ferido e percebe que ele está à beira da morte. \nEle estende a mão e entrega a você um pequeno frasco contendo uma poção de cura. \nVocê tenta dar a poção, mas é tarde demais. O soldado morre em seus braços.\n");
@@ -84,12 +84,12 @@ public class Atos {
         Personagem.acharCura(personagem);
 
         System.out.printf("\nPressione Enter para continuar...");
-        scanner.nextLine(); // Avança para a próxima linha
+        input.nextLine(); // Avança para a próxima linha
         Metodos.clearConsole(); // Limpa o console
-        oPortal(personagem, scanner);
+        oPortal(personagem, input);
     }
     /* ATO I - Parte 3 */ 
-    public static void oPortal(Personagem personagem, Scanner scanner) {
+    public static void oPortal(Personagem personagem, Scanner input) {
         System.out.printf("Enquanto caminha você avista uma luz intensa. A luminosidade é tão forte que transforma a noite em dia, deixando você curioso sobre o que pode estar acontecendo. \nDecidido a desvendar o mistério, você avança em direção a luz.\n");
         Metodos.delay(1000); // Adiciona atraso
         System.out.printf("\nA medida que você avança, percebe que a luz parece vir de uma clareira à frente. \nQuando chega mais perto, vê que há uma espécie de portal brilhante no centro da clareira, que parece estar se expandindo e pulsando. \nO vento sopra forte e uma energia estranha parece envolver tudo ao seu redor.\n");
@@ -97,7 +97,7 @@ public class Atos {
         System.out.printf("\nCurioso, você se aproxima do portal e sente uma sensação de formigamento em todo o corpo. \nAntes que você possa decidir o que fazer, uma figura encapuzada surge do outro lado do portal e começa a falar com você em um idioma desconhecido.\n");
         Metodos.delay(1500); // Adiciona atraso
         System.out.printf("\nPressione Enter para continuar...");
-        scanner.nextLine(); // Avança para a próxima linha
+        input.nextLine(); // Avança para a próxima linha
         Metodos.clearConsole(); // Limpa o console
 
         if(personagem.getNome().equals("classes.Mago")){
@@ -109,7 +109,7 @@ public class Atos {
         }
         Metodos.delay(1500); // Adiciona atraso
         System.out.printf("\nPressione Enter para continuar...");
-        scanner.nextLine(); // Avança para a próxima linha
+        input.nextLine(); // Avança para a próxima linha
         Metodos.clearConsole(); // Limpa o console
     }
     /* ATO II - Parte 1 */

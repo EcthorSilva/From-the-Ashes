@@ -10,22 +10,22 @@ public class Metodos {
     
     // Menu
     public static void menu() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         boolean sair = false;
 
         // Boas vindas
         clearConsole(); // Limpa o console
         System.out.printf("Bem-vindo ao From the Ashes\n");
         System.out.printf("\nPressione Enter para iniciar o jogo...");
-        scanner.nextLine(); // Avança para a próxima linha
+        input.nextLine(); // Avança para a próxima linha
         
         // Menu Principal
         while (!sair) {
             clearConsole(); // Limpa o console
             System.out.printf("Escolha uma das opções abaixo: \n\n1. Introdução\n2. Jogar\n3. Créditos\n4. Sair\n");
             System.out.printf("\n>"); // Indica onde o usuario irá digitar
-            int opcao = scanner.nextInt();
-            scanner.nextLine(); // Avança para a próxima linha
+            int opcao = input.nextInt();
+            input.nextLine(); // Avança para a próxima linha
             
             switch (opcao) {
                 case 1:
@@ -36,7 +36,7 @@ public class Metodos {
                     System.out.printf("\nDurante a sua aventura, você irá se deparar com diversos monstros que precisam ser derrotados para que você possa avançar na história. \nPara enfrentá-los, você terá a opção de atacar, defender ou até mesmo fugir. \nSuas escolhas durante as batalhas serão cruciais para o resultado final e para o seu progresso na jornada. \n\nPortanto, escolha sabiamente e use suas habilidades e recursos com cautela para vencer essas batalhas épicas. \nBoa sorte!\n\n");
                     delay(1500); // Adiciona atraso 
                     System.out.print("Pressione Enter para continuar...");
-                    scanner.nextLine(); // Avança para a próxima linha
+                    input.nextLine(); // Avança para a próxima linha
                     break;
                 case 2:
                     clearConsole(); // Limpa o console
@@ -49,7 +49,7 @@ public class Metodos {
                     System.out.printf("Desenvolvido por: Ecthor Silva\n\n");
                     delay(1500); // Adiciona atraso 
                     System.out.printf("Pressione Enter para continuar...");
-                    scanner.nextLine(); // Avança para a próxima linha
+                    input.nextLine(); // Avança para a próxima linha
                     break;
                 case 4:
                     sair = true;
@@ -60,15 +60,15 @@ public class Metodos {
                 default:
                     clearConsole(); // Limpa o console
                     System.out.printf("Opção inválida!\nPressione Enter para tentar novamente!");
-                    scanner.nextLine(); // Avança para a próxima linha
+                    input.nextLine(); // Avança para a próxima linha
                     System.out.println(" ");
             }
         }
-        scanner.close();
+        input.close();
     }
     // Iniciando o jogo
     public static void jogar(){
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         clearConsole(); // Limpa o console
         System.out.print("Carregando...");
@@ -82,14 +82,14 @@ public class Metodos {
         delay(1000); // Adiciona atraso
         
         // Criar personagem
-        Personagem personagem = criarPersonagem(scanner);
+        Personagem personagem = criarPersonagem(input);
 
         delay(1000); // Adiciona atraso 
         System.out.printf("\n-- ATO I --\n\n");
         delay(1000); // Adiciona atraso 
         
         /* Ato I */ 
-        Atos.visitarTaverna(personagem, scanner);
+        Atos.visitarTaverna(personagem, input);
 
         delay(1000); // Adiciona atraso 
         System.out.printf("\n-- Fim do ATO I --\n");
@@ -99,18 +99,18 @@ public class Metodos {
         
         System.out.printf("\nPressione Enter para continuar...");
         
-        scanner.nextLine(); // Avança para a próxima linha
+        input.nextLine(); // Avança para a próxima linha
         clearConsole(); // Limpa o console
     }
     // Seleção da Classe do personagem
-    public static Personagem criarPersonagem(Scanner scanner) {
+    public static Personagem criarPersonagem(Scanner input) {
         System.out.printf("\nAntes de iniciar você precisará selecionar cuidadosamente sua classe. \nSeu treinamento e habilidades em batalha serão essenciais para superar os desafios que encontrará em sua jornada.\n\n");
         delay(1500); // Adiciona atraso 
         System.out.printf("Escolha sua classe: \n\n1. Guerreiro \n2. Mago \n3. Arqueiro\n4. Clerigo");
     
         System.out.printf("\n>"); // Indica onde o usuario irá digitar
-        int classeEscolhida = scanner.nextInt();
-        scanner.nextLine(); // Avança para a próxima linha
+        int classeEscolhida = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
        
         // Escolha de classe
         Personagem personagem = null;
@@ -132,7 +132,7 @@ public class Metodos {
                 System.out.println("Opção inválida. Tente novamente...");
                 // Caso escolha uma opção inexistente o jogo retorna para a criação de personagem
                 delay(1000);
-                return criarPersonagem(scanner);
+                return criarPersonagem(input);
         }
         clearConsole(); // Limpa o console
         System.out.printf("Você escolheu a classe %s.\n", personagem.getNome());
@@ -171,21 +171,21 @@ public class Metodos {
         System.out.printf("Você tem %d de estus flask.\n\n", personagem.getEstusFlask());
     }
     // Função para verificar se o personagem foi derrotado
-    public static void VerificarPersonagem(Personagem personagem, Monstro monstro, Scanner scanner){
+    public static void VerificarPersonagem(Personagem personagem, Monstro monstro, Scanner input){
         // Verifica se o personagem foi derrotado
         if (personagem.getVida() <= 0) {
             // GAME OVER - PERDEU A BATALHA
             System.out.printf("GAME OVER! Você foi derrotado pelo %s!\n\n", monstro.getNome());
             delay(1000); // Adiciona atraso
             System.out.print("Pressione Enter para voltar ao Menu Principal...");
-            scanner.nextLine(); // Avança para a próxima linha
+            input.nextLine(); // Avança para a próxima linha
             Game.main(null); // Retorna para o inicio do jogo
         } else {
             System.out.printf("Você derrotou o %s!\n\n", monstro.getNome());
         }
     }
     // Função para iniciar o loop da batalha
-    public static void loopBatalha(Personagem personagem, Monstro monstro, Scanner scanner) {
+    public static void loopBatalha(Personagem personagem, Monstro monstro, Scanner input) {
         System.out.printf("Um %s apareceu!\n", monstro.getNome());
 
         cont(personagem, monstro); // Exibe a vida do personagem e do monstro
@@ -194,8 +194,8 @@ public class Metodos {
         while (personagem.getVida() > 0 && monstro.getVida() > 0) {
             System.out.printf("Escolha sua ação: \n\n1. Atacar \n2. Defender \n3. Fugir\n4. Curar");
             System.out.printf("\n>"); // Indica onde o usuario irá digitar
-            int acao = scanner.nextInt();
-            scanner.nextLine(); // Avança para a próxima linha
+            int acao = input.nextInt();
+            input.nextLine(); // Avança para a próxima linha
 
             switch (acao) {
                 case 1:
@@ -251,6 +251,6 @@ public class Metodos {
             }
             cont(personagem, monstro); // Exibe a vida do personagem e do monstro
         }
-        VerificarPersonagem(personagem, monstro, scanner); // Verificar se o personagem foi derrotado
+        VerificarPersonagem(personagem, monstro, input); // Verificar se o personagem foi derrotado
     }
 }

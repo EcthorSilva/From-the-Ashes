@@ -113,4 +113,65 @@ public class Atos {
         Metodos.clearConsole(); // Limpa o console
     }
     /* ATO II - Parte 1 */
+    public static void aCaverna(Personagem personagem, Scanner input) {
+        System.out.printf("Confuso com o que acabou de presenciar, você se afasta das marcas deixadas no chão pelo portal e decide seguir adiante, buscando sair da clareira e retomar o seu caminho. \nNo entanto, a sensação de que algo está te perseguindo permanece. Sem hesitar, você toma uma decisão rápida e instintiva correndo em direção a uma caverna próxima para buscar abrigo e se esconder.\n\n");
+        Metodos.delay(1000); // Adiciona atraso
+        System.out.printf("Ao adentrar a caverna escura tudo o que você consegue ouvir são os sons dos seus passos ecoando pelas paredes rochosas. \nA escuridão se intensifica a cada passo que você dá em direção ao interior da caverna. \nEnquanto você se move cautelosamente, apoiando-se nas paredes para obter equilíbrio, uma entrada secreta, antes perfeitamente camuflada nas paredes de pedra, se abre ao seu lado.\n");
+        Metodos.delay(1000); // Adiciona atraso
+        System.out.printf("\nA abertura revela um corredor estreito e misterioso que se estende para além da vista: \n\n1) Seguir através da entrada secreta.\n2) Continuar seu caminho ao interior da caverna.\n");
+
+        System.out.printf("\n>"); // Indica onde o usuario irá digitar
+        int escolha = input.nextInt();
+        input.nextLine(); // Avança para a próxima linha
+
+        switch (escolha) {
+            case 1:
+                Metodos.clearConsole(); // Limpa o console
+                // Passagem secreta
+                System.out.printf("À medida que avança, o som dos seus passos ecoa pelas paredes rochosas, criando uma atmosfera sinistra e desconcertante. \nSeus sentidos estão alertas, buscando detectar qualquer sinal de perigo iminente.\n\n");
+                Metodos.delay(1000); // Adiciona atraso
+                System.out.printf("Após alguns passos, você entra em uma sala ampla e iluminada por velas trêmulas. \nNo centro, encontra-se uma figura encapuzada ajoelhada em frente a um antigo altar.\n\n");
+                Metodos.delay(1000); // Adiciona atraso
+                System.out.printf("Conforme você se aproxima, a figura encapuzada se levanta lentamente, revelando uma aura sinistra que emana de seu corpo. \nEm um instante, sua forma se distorce e se transforma em uma criatura horrenda.\n\n");
+                Metodos.delay(1000); // Adiciona atraso
+                // Geração aleatória do monstro
+                Monstro monstro = Metodos.gerarMonstroAleatorio();
+                // Loop da Batalha
+                Metodos.loopBatalha(personagem, monstro, input);
+                // Encontrou uma cura 
+                Personagem.acharCura(personagem);
+                Metodos.delay(1500); // Adiciona atraso
+                System.out.printf("\nPressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                Metodos.clearConsole();
+                System.out.printf("Após uma luta árdua e repleta de tensão, suas habilidades superam a criatura das trevas. \nEla emite um grito final e desaparece em uma névoa sombria, dissipando-se lentamente no ar.\n\n");
+                System.out.printf("A sala volta a ser iluminada apenas pelas velas. \nEnquanto recupera o fôlego e avalia os ferimentos, seu olhar é atraído para uma porta no fundo da sala, antes oculta pelas sombras. \nA porta, agora aberta, revela uma passagem que se estende em direção ao desconhecido.\n");
+                // Aquela pausinha marota
+                System.out.printf("\nPressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                Metodos.clearConsole(); // Limpa o console
+                /* Chamar o proximo capitulo*/
+                break;
+            case 2:
+                Metodos.clearConsole(); // Limpa o console
+                // Segue o baile
+                System.out.printf("Você decide continuar seu caminho ao interior da caverna, ignorando a entrada secreta que se revelou ao seu lado.\nEnquanto avança, a escuridão ao seu redor fica cada vez mais densa e impenetrável.\n\n");
+                Metodos.delay(1000); // Adiciona atraso
+                System.out.printf("Após algum tempo de exploração, você finalmente avista uma fraca claridade adiante. Seu coração se enche de esperança ao perceber que uma saída pode estar próxima. \nVocê acelera o passo, movendo-se em direção à luz e se aproximando de uma abertura no final da caverna.\n\n");
+                Metodos.delay(1000); // Adiciona atraso
+                System.out.printf("Ao alcançar a saída, você se depara com uma paisagem deslumbrante.\n\n");
+                // Aquela pausinha marota
+                System.out.printf("\nPressione Enter para continuar...");
+                input.nextLine(); // Avança para a próxima linha
+                Metodos.clearConsole(); // Limpa o console
+                /* Chamar o proximo capitulo*/
+                break;
+            default:
+                System.out.println("Escolha inválida!");
+                aCaverna(personagem, input);
+                input.nextLine(); // Avança para a próxima linha
+                break;
+        }
+
+    }
 }

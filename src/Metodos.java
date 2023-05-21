@@ -84,21 +84,24 @@ public class Metodos {
         // Criar personagem
         Personagem personagem = criarPersonagem(input);
 
+        /* Ato I */ 
         delay(1000); // Adiciona atraso 
         System.out.printf("\n-- ATO I --\n\n");
         delay(1000); // Adiciona atraso 
-        
-        /* Ato I */ 
         Atos.visitarTaverna(personagem, input);
-
         delay(1000); // Adiciona atraso 
         System.out.printf("\n-- Fim do ATO I --\n");
         delay(1000); // Adiciona atraso 
+        clearConsole();
+        /* Ato II */ 
+        delay(1500); // Adiciona atraso 
+        System.out.printf("\n-- ATO II --\n\n");
+        Atos.aCaverna(personagem, input);
+        delay(1000); // Adiciona atraso 
+        /* Fim da demo */
         System.out.printf("\nObrigado por jogar esta demo\n");
         delay(1000); // Adiciona atraso 
-        
         System.out.printf("\nPressione Enter para continuar...");
-        
         input.nextLine(); // Avança para a próxima linha
         clearConsole(); // Limpa o console
     }
@@ -166,8 +169,19 @@ public class Metodos {
     }
     // Função que exibe a vida do personagem e do monstro
     public static void cont(Personagem personagem, Monstro monstro){
-        System.out.printf("\nVocê tem %d de vida.\n", personagem.getVida());
-        System.out.printf("O %s tem %d de vida.\n\n", monstro.getNome(), monstro.getVida());
+        // Personagem
+        if (personagem.getVida() < 0) {
+            System.out.printf("\nVocê tem 0 de vida.\n");
+        } else {
+            System.out.printf("\nVocê tem %d de vida.\n", personagem.getVida());
+        }
+        // Monstro
+        if(monstro.getVida() < 0){
+           System.out.printf("O %s tem 0 de vida.\n\n", monstro.getNome()); 
+        }else{
+           System.out.printf("O %s tem %d de vida.\n\n", monstro.getNome(), monstro.getVida());  
+        }
+        // Quantidade de Cura
         System.out.printf("Você tem %d de estus flask.\n\n", personagem.getEstusFlask());
     }
     // Função para verificar se o personagem foi derrotado
